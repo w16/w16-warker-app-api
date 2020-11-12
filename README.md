@@ -36,15 +36,20 @@ Pode contar pontos extras
 ### Exemplo de tabelas:
 
 Cidades
+```
 |id |nome_da_cidade|created_at|updated_at|
 |int|string        |timestamp |timestamp |
+```
 
 Postos
+```
 |id |cidade_id|reservatorio|latitude|longitude|created_at|updated_at|
 |int|int(fk)  |int(1-100%) |double  |double   |timestamp |timestamp |
+```
 
 ### Endpoints esperados
 /api/cidade/id
+```
 {
     id : id,
     cidade : nome_da_cidade,
@@ -58,8 +63,10 @@ Postos
         updated_at : updated_at
     }
 }
+```
 
 /api/posto/id
+```
 {
     id : id,
     reservatorio : reservatorio,
@@ -69,6 +76,7 @@ Postos
     },
     updated_at : updated_at
 }
+```
 
 ## Entrega
 Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório todo o código do Wordpress. O prazo para entrega será **segunda-feira, --, às 10:00**.
