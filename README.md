@@ -7,22 +7,72 @@ Olá! Muito obrigado por participar da avalição técnica para integrar a equip
 Criamos esta avaliação para avaliar seu conhecimento em lógica de programação, capacidade de investigar e conhecer novas ferramentas, organização e qualidade de código e especialmente, sua criatividade.
 
 ## Especificação
-Crie uma API REST em Laravel que te dê orgulho! Queremos receber uma API de um aplicativo mobile chamado WUBER, uma ideia inovadora que irá revolucionar o mundo..
-
-O projeto precisa utilizar diversos recursos que o Laravel ofecere, por isso, seja criativo!
+No mundo pós apocaliptico de 2021, o combustível tem um valor inestimável. Gangues bárbaras lutam até a morte pelo controle desse valioso recurso e a W16 está desenvolvendo o aplicativo WARKER, que é a última esperança da humanidade em trazer um pouco de paz e ordem à esse mundo devastado.
+Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de gasolina das diversas cidades, sua localização e o nível dos seus reservatórios. Lembre-se de que não há mais lei e a sua vida depende do sucesso desse backend. Marcopoc não fica feliz quando o seu app falha devido a erros no backend e você não quer deixar o Marcopoc irritado...
 
 ## Regras
-- 
+- Não há regras, não há lei, apenas a sobrevivência importa! 
 
-## Dicas
-- 
+## Recomendações
+- Faça bom uso dos recursos do framework (migrations, factories, estrutura MVC, rotas...)
+- D.R.Y. = "Don't Repeat Yourself"
+- Mantenha o código limpo e organizado
+- Utilize comentários pois alguém irá ler o seu código. Nosso último dev esqueceu um comentário importante. RIP :(
+- Utilize o README.md do seu projeto para explicar instalação, funcionamento, o processo que usou para o desenvolvimento ou implorar por misericórdia.
 
 ## Importante
+- Use Laravel 8
+- Use Laravel 8
+- Use Laravel 8
+- Já mencionei que a versão do laravel é a v8?
+- Lembre-se de usar os métodos GET,PUT,POST e DELETE.
 
+## Pontos Extras
+Pode contar pontos extras
+- CRUD Web
+- Autenticação
+- Seeder e uso de fakers
+
+### Exemplo de tabelas:
+
+Cidades
+|id |nome_da_cidade|created_at|updated_at|
+|int|string        |timestamp |timestamp |
+
+Postos
+|id |cidade_id|reservatorio|latitude|longitude|created_at|updated_at|
+|int|int(fk)  |int(1-100%) |double  |double   |timestamp |timestamp |
+
+### Endpoints esperados
+/api/cidade/id
+{
+    id : id,
+    cidade : nome_da_cidade,
+    postos : {
+        id : id,
+        reservatorio : reservatorio,
+        coords : {
+            latitude : latitude,
+            longitude : longitude
+        },
+        updated_at : updated_at
+    }
+}
+
+/api/posto/id
+{
+    id : id,
+    reservatorio : reservatorio,
+    coords : {
+        latitude : latitude,
+        longitude : longitude
+    },
+    updated_at : updated_at
+}
 
 ## Entrega
 Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório todo o código do Wordpress. O prazo para entrega será **segunda-feira, --, às 10:00**.
 
 Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso time.
 
-Boa sorte!
+2 DEVS ENTRAM, 1 DEV SAI!
