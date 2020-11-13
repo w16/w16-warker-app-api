@@ -37,8 +37,8 @@ Pode contar pontos extras
 
 Cidades
 ```
-|id |nome_da_cidade|created_at|updated_at|
-|int|string        |timestamp |timestamp |
+|id |nome_da_cidade|latitude|longitude|created_at|updated_at|
+|int|string        |double  |double   |timestamp |timestamp |
 ```
 
 Postos
@@ -53,6 +53,10 @@ Postos
 {
     id : id,
     cidade : nome_da_cidade,
+    coords : {
+            latitude : latitude,
+            longitude : longitude
+        },
     postos : {
         id : id,
         reservatorio : reservatorio,
@@ -60,7 +64,8 @@ Postos
             latitude : latitude,
             longitude : longitude
         },
-        updated_at : updated_at
+        updated_at : updated_at,
+        created_at : created_at
     }
 }
 ```
@@ -74,7 +79,8 @@ Postos
         latitude : latitude,
         longitude : longitude
     },
-    updated_at : updated_at
+    updated_at : updated_at,
+    created_at : created_at
 }
 ```
 
