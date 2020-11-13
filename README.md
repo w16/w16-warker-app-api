@@ -31,6 +31,7 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
 Pode contar pontos extras
 - CRUD Web
 - Autenticação
+- Teste automatizado
 - Seeder e uso de fakers
 
 ### Exemplo de tabelas:
