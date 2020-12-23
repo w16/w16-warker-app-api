@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Posto extends Model
 {
     use HasFactory;
+
+    public function cidade() {
+        return $this->belongsTo('Cidade');
+    }
 }

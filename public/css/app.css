@@ -31425,7 +31425,7 @@ select {
           animation: bounce 1s infinite;
 }
 
-#warker-map { height: 420px;
+#warker-map { height: 600px;
 }
 
 @media (min-width: 640px) {

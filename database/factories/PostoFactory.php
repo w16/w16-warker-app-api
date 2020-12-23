@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Posto;
+use App\Models\Cidade;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostoFactory extends Factory
@@ -21,8 +22,15 @@ class PostoFactory extends Factory
      */
     public function definition()
     {
+        $numberOfCities = Cidade::count();
+
+        $cidade = Cidade::find(rand(1, $numberOfCities));
+
         return [
-            //
+            'cidade_id' => $cidade->id,
+            'reservatorio' => rand(0, 100),
+            'latitude' => $this->faker->latitude($cidade->latidude+rand(-1,1)),
+            'longitude' => $this->faker->longitude($cidade->longitude+rand(-1,1))
         ];
     }
 }

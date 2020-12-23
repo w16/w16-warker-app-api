@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +19,8 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', function (Request $request) {
+    return view('dashboard', [ 'apiToken' => $request->user()->tokens[0]->name ]);
+})->middleware(['auth', 'auth:sanctum'])->name('dashboard');
 
 require __DIR__.'/auth.php';

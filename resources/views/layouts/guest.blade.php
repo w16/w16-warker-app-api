@@ -17,8 +17,15 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+        <div class="font-sans text-gray-100 antialiased">
             {{ $slot }}
         </div>
     </body>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            axios.get('/sanctum/csrf-cookie').then(response => {
+                console.log(response);
+            });
+        });
+    </script>
 </html>

@@ -21,8 +21,11 @@ class CidadeFactory extends Factory
      */
     public function definition()
     {
+        $this->faker->locale = 'pt-BR';
         return [
-            //
+            'nome_da_cidade' => $this->faker->city,
+            'latitude' => $this->faker->latitude(-40, 10),
+            'longitude' => $this->faker->longitude(-75, -25)
         ];
     }
 }

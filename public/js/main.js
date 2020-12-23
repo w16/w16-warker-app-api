@@ -11,5 +11,11 @@ $(() => {
         accessToken: 'pk.eyJ1IjoieWRyZXplbmRlIiwiYSI6ImNraXhpNDY2NzExem4ycnNiY2R6MjR4eG4ifQ.B1LhPfrTODlsgDbNjp8YxA'
     }).addTo(map);
 
-    setTimeout(() => { map.invalidateSize() ; }, 1000);
+    map.on('load', map.invalidateSize);
 });
+
+function generateToken() {
+    axios.post('/api/token/generate', response => {
+        document.querySelector('#plain_token').innerHTML = response.data;
+    });
+}
