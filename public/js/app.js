@@ -46266,6 +46266,25 @@ __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
 __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
 
+window.map;
+window.addEventListener('DOMContentLoaded', function (event) {
+  map = L.map('warker-map').setView([-15.14, -51.53], 4);
+  var tileLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoieWRyZXplbmRlIiwiYSI6ImNraXhpNDY2NzExem4ycnNiY2R6MjR4eG4ifQ.B1LhPfrTODlsgDbNjp8YxA', {
+    maxZoom: 15,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoieWRyZXplbmRlIiwiYSI6ImNraXhpNDY2NzExem4ycnNiY2R6MjR4eG4ifQ.B1LhPfrTODlsgDbNjp8YxA'
+  }).addTo(map);
+});
+
+window.generateToken = function () {
+  axios.post('/api/token/generate').then(function (response) {
+    var api_token = response.data.api_token.split('|')[1];
+    document.querySelector('#plain_token').innerHTML = api_token;
+  });
+};
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
