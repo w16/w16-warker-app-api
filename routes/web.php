@@ -15,12 +15,23 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/login');
+Route::get('/', function (Request $request) {
+    if(Auth::check()) {
+        $data = [];
+        
+        if(count($request->user()->tokens) == 0) {
+            $token = explode('|', $request->user()->createToken('api_token')->plainTextToken);
+            $data['api_token'] = $token[1];
+        }
+
+        return view('dashboard', $data);
+    } else {
+        return redirect('/login');
+    }
 });
 
-Route::get('/dashboard', function (Request $request) {
-    return view('dashboard', [ 'apiToken' => $request->user()->tokens[0]->name ]);
+Route::get('/dashboard', function () {
+    return view('dashboard');
 })->middleware(['auth', 'auth:sanctum'])->name('dashboard');
 
 require __DIR__.'/auth.php';

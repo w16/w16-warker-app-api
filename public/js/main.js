@@ -15,7 +15,9 @@ $(() => {
 });
 
 function generateToken() {
-    axios.post('/api/token/generate', response => {
-        document.querySelector('#plain_token').innerHTML = response.data;
+    axios.post('/api/token/generate').then(response => {
+        let api_token = response.data.api_token.split('|')[1];
+
+        document.querySelector('#plain_token').innerHTML = api_token;
     });
 }

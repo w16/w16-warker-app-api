@@ -29,8 +29,21 @@ class PostoFactory extends Factory
         return [
             'cidade_id' => $cidade->id,
             'reservatorio' => rand(0, 100),
-            'latitude' => $this->faker->latitude($cidade->latidude+rand(-1,1)),
-            'longitude' => $this->faker->longitude($cidade->longitude+rand(-1,1))
+            'latitude' => $this->faker->latitude($cidade->latidude+rand(-1,0), $cidade->longitude+rand(0,1)),
+            'longitude' => $this->faker->longitude($cidade->longitude+rand(-1,0), $cidade->longitude+rand(0,1))
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterMaking(function (Posto $posto) {
+            //
+            $cidade = Cidade::findOrFail($posto->cidade_id);
+
+            $posto->latitude = $this->faker->latitude($cidade->latitude+rand(-1,0), $cidade->latitude+rand(0,1));
+            $posto->longitude = $this->faker->longitude($cidade->longitude+rand(-1,0), $cidade->longitude+rand(0,1));
+        })->afterCreating(function (Posto $posto) {
+            //
+        });
     }
 }

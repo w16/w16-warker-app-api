@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/token/generate', function (Request $request) {
-    return ['api_token' => $request->user()->createToken('apiToken')->plainTextToken ];
-})->middleware(['auth']);
 
-Route::middleware(['auth:sanctum'])->group(function () {    
+Route::middleware(['auth:sanctum'])->group(function () { 
+    Route::post('/token/generate', function (Request $request) {
+        $request->user()->tokens()->delete();
+        return ['api_token' => $request->user()->createToken('apiToken')->plainTextToken ];
+    });
+
     Route::get('/cidades', 'CidadeController@index');
+    Route::get('/cidade/{id}', 'CidadeController@show');
     Route::get('/postos', 'PostoController@index');
+    Route::get('/posto/{id}', 'PostoController@show');
 });
