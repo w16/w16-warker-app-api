@@ -26,6 +26,8 @@ class PostoFactory extends Factory
 
         $cidade = Cidade::find(rand(1, $numberOfCities));
 
+        if($cidade == null) $cidade = Cidade::factory()->create();
+
         return [
             'cidade_id' => $cidade->id,
             'reservatorio' => rand(0, 100),

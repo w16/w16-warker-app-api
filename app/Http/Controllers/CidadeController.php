@@ -8,8 +8,34 @@ use Illuminate\Support\Facades\Validator;
 
 class CidadeController extends Controller
 {
-    public function index() {
-        return Cidade::paginate(25);
+    public function index(Request $request) {
+        if(!$request->lat && !$request->lng) {
+            return Posto::paginate(25);
+        }
+
+        $request->validate([
+            'lat' => 'required|numeric',
+            'lng' => 'required|numeric',
+            'range' => 'numeric|min:0'
+        ]);
+
+        $lat = $request->lat;
+        $lng = $request->lng;
+
+        //Pegamos o range do parametro
+        //ou colocamos o padrão
+        $range = $request->range != null ? $request->range : 2;
+
+        $minLat = $lat-$range;
+        $maxLat = $lat+$range;
+
+        $minLng = $lng-$range;
+        $maxLng = $lng+$range;
+
+        return Cidade::
+            whereBetween('latitude', [$minLat, $maxLat])->
+            whereBetween('longitude', [$minLng, $maxLng])
+            ->get();
     }
 
     public function show($id) {
@@ -23,7 +49,13 @@ class CidadeController extends Controller
             'lng' => 'required|numeric',
         ]);
 
-        return Cidade::create($request->all());
+        $data = [
+            'nome_da_cidade' => $request->nome,
+            'latitude' => $request->lat,
+            'longitude' => $request->lng
+        ];
+
+        return response(Cidade::create($data), 201);
     }
 
     public function destroy($id) {

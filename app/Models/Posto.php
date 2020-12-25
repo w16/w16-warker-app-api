@@ -9,6 +9,13 @@ class Posto extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'cidade_id',
+        'reservatorio',
+        'latitude',
+        'longitude'
+    ];
+
     public function cidade() {
         return $this->belongsTo('Cidade');
     }

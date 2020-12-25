@@ -25,11 +25,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/cidade/{id}', 'CidadeController@show');
     Route::delete('/cidade/{id}', 'CidadeController@delete');
     Route::put('/cidade/{id}', 'CidadeController@update');
-    Route::post('/cidade/{id}', 'CidadeController@create');
+    Route::post('/cidade', 'CidadeController@create');
 
     Route::get('/postos', 'PostoController@index');
     Route::get('/posto/{id}', 'PostoController@show');
     Route::delete('/posto/{id}', 'PostoController@delete');
     Route::put('/posto/{id}', 'PostoController@update');
-    Route::post('/posto/{id}', 'PostoController@create');
+    Route::post('/posto', 'PostoController@create');
 });

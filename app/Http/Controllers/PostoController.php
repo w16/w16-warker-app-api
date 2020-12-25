@@ -20,6 +20,7 @@ class PostoController extends Controller
         $request->validate([
             'lat' => 'required|numeric',
             'lng' => 'required|numeric',
+            'range' => 'numeric|min:0'
         ]);
 
         $lat = $request->lat;
@@ -37,14 +38,13 @@ class PostoController extends Controller
 
         return Posto::
             whereBetween('latitude', [$minLat, $maxLat])->
-            whereBetween('longitude', [$minLng, $maxLng])->
-            limit(100)
+            whereBetween('longitude', [$minLng, $maxLng])
             ->get();
     }
 
     public function create(Request $request) {
         $request->validate([
-            'cidade_id'=> 'exists:|cidades,id',
+            'cidade_id'=> 'required|numeric|exists:cidades,id',
             'reservatorio' => 'numeric|min:0|max:100',
             'lat' => 'required|numeric',
             'lng' => 'required|numeric',
@@ -64,7 +64,14 @@ class PostoController extends Controller
                 $cidade->longitude) > 2)
             return response('Fora das fronteiras da cidade.', 422);
 
-        return Posto::create($request->all());
+        $data = [
+            'cidade_id' => $request->cidade_id,
+            'reservatorio' => $request->reservatorio,
+            'latitude' => $request->lat,
+            'longitude' => $request->lng
+        ];
+
+        return response(Posto::create($data), 201);
     }
 
     public function show($id) {
