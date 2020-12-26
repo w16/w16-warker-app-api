@@ -23,13 +23,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/cidades', 'CidadeController@index');
     Route::get('/cidade/{id}', 'CidadeController@show');
-    Route::delete('/cidade/{id}', 'CidadeController@delete');
+    Route::delete('/cidade/{id}', 'CidadeController@destroy');
     Route::put('/cidade/{id}', 'CidadeController@update');
     Route::post('/cidade', 'CidadeController@create');
 
     Route::get('/postos', 'PostoController@index');
     Route::get('/posto/{id}', 'PostoController@show');
-    Route::delete('/posto/{id}', 'PostoController@delete');
+    Route::delete('/posto/{id}', 'PostoController@destroy');
     Route::put('/posto/{id}', 'PostoController@update');
     Route::post('/posto', 'PostoController@create');
 });

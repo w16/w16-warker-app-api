@@ -49045,8 +49045,9 @@ window.WarkerMarker = /*#__PURE__*/function (_L$Marker) {
 
   _createClass(_class, [{
     key: "delete",
-    value: function _delete() {
+    value: function _delete(map) {
       axios["delete"]('/api/' + this.type + '/' + this.id);
+      map.removeLayer(this);
     }
   }]);
 
@@ -49063,10 +49064,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
     tileSize: 512,
     zoomOffset: -1,
     accessToken: 'pk.eyJ1IjoieWRyZXplbmRlIiwiYSI6ImNraXhpNDY2NzExem4ycnNiY2R6MjR4eG4ifQ.B1LhPfrTODlsgDbNjp8YxA'
-  }).addTo(warkerMap);
-  L.featureGroup([cityMarkerCluster, stationMarkerCluster]).on('click', function (e) {
-    console.log(e);
-    console.log(this);
   }).addTo(warkerMap);
   setTimeout(loadMakers, 600);
 });
@@ -49091,6 +49088,10 @@ window.loadMakers = function () {
         if (!stationMarkers[stations[i].id]) {
           warkerMarker = new WarkerMarker(stations[i], 'posto');
           stationMarkers[warkerMarker.id] = warkerMarker;
+          warkerMarker.on('contextmenu', function (e) {
+            delete stationMarkers[this.id];
+            this["delete"](warkerMap);
+          });
           stationMarkerCluster.addLayer(warkerMarker);
         }
       }
@@ -49104,6 +49105,10 @@ window.loadMakers = function () {
         if (!cityMarkers[cities[i].id]) {
           warkerMarker = new WarkerMarker(cities[i], 'cidade');
           cityMarkers[warkerMarker.id] = warkerMarker;
+          warkerMarker.on('contextmenu', function (e) {
+            delete cityMarkers[this.id];
+            this["delete"](warkerMap);
+          });
           cityMarkerCluster.addLayer(warkerMarker);
         }
       }
