@@ -17,6 +17,6 @@ class Cidade extends Model
     ];
 
     public function postos() {
-        return $this->hasMany('Postos');
+        return $this->hasMany('App\Models\Posto');
     }
 }

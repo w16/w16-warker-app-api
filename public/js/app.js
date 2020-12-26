@@ -49014,8 +49014,8 @@ window.WarkerMarker = /*#__PURE__*/function (_L$Marker) {
     _classCallCheck(this, _class);
 
     var LatLng = {
-      lat: data.latitude,
-      lng: data.longitude
+      lat: data.coords.latitude,
+      lng: data.coords.longitude
     };
     var icon;
 

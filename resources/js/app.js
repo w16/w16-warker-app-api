@@ -18,7 +18,7 @@ window.cityMarkers = {};
 window.WarkerMarker = class extends L.Marker {
     constructor(data, type) {
 
-        let LatLng = { lat: data.latitude, lng: data.longitude };
+        let LatLng = { lat: data.coords.latitude, lng: data.coords.longitude };
         let icon;
 
         if(type == 'cidade') {

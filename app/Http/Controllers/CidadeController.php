@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cidade;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\Cidade as JsonCidade;
+use App\Http\Resources\CidadeCollection;
 
 class CidadeController extends Controller
 {
     public function index(Request $request) {
         if(!$request->lat && !$request->lng) {
-            return Posto::paginate(25);
+            return new CidadeCollection(Cidade::paginate(25));
         }
 
         $request->validate([
@@ -26,20 +28,21 @@ class CidadeController extends Controller
         //ou colocamos o padrão
         $range = $request->range != null ? $request->range : 2;
 
+        //Calculamos range minimo e máximo
         $minLat = $lat-$range;
         $maxLat = $lat+$range;
 
         $minLng = $lng-$range;
         $maxLng = $lng+$range;
 
-        return Cidade::
+        return new CidadeCollection(Cidade::
             whereBetween('latitude', [$minLat, $maxLat])->
             whereBetween('longitude', [$minLng, $maxLng])
-            ->get();
+            ->get());
     }
 
     public function show($id) {
-        return Cidade::findOrFail($id);
+        return new JsonCidade(Cidade::findOrFail($id));
     }
 
     public function create(Request $request) {
@@ -55,11 +58,11 @@ class CidadeController extends Controller
             'longitude' => $request->lng
         ];
 
-        return response(Cidade::create($data), 201);
+        return response(new JsonCidade(Cidade::create($data)), 201);
     }
 
     public function destroy($id) {
-        return Cidade::destroy($id);
+        return new JsonCidade(Cidade::destroy($id));
     }
 
     public function update(Request $request) {
@@ -78,6 +81,6 @@ class CidadeController extends Controller
 
         $cidade->save();
 
-        return $cidade;
+        return new JsonCidade($cidade);
     }
 }

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Posto;
 use App\Models\Cidade;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\Posto as JsonPosto;
+use App\Http\Resources\PostoCollection;
 
 class PostoController extends Controller
 {
@@ -14,7 +16,7 @@ class PostoController extends Controller
     public function index(Request $request) {
         
         if(!$request->lat && !$request->lng) {
-            return Posto::paginate(25);
+            return new PostoCollection(Posto::paginate(25));
         }
 
         $request->validate([
@@ -30,16 +32,17 @@ class PostoController extends Controller
         //ou colocamos o padrão
         $range = $request->range != null ? $request->range : 2;
 
+        //Calculamos range minimo e máximo
         $minLat = $lat-$range;
         $maxLat = $lat+$range;
 
         $minLng = $lng-$range;
         $maxLng = $lng+$range;
 
-        return Posto::
+        return new PostoCollection(Posto::
             whereBetween('latitude', [$minLat, $maxLat])->
             whereBetween('longitude', [$minLng, $maxLng])
-            ->get();
+            ->get());
     }
 
     public function create(Request $request) {
@@ -53,7 +56,7 @@ class PostoController extends Controller
         //Pegamos a cidade para verificar a distancia
         $cidade = Cidade::find($request->cidade_id);
 
-        //Calculamos para ver se não está muito distante da cidade
+        //Calculamos para ver se não está muito distante da cidade que pertence
         if($this->simpleDistance(
                 $request->lat,
                 $cidade->latitude) > 2)
@@ -71,15 +74,15 @@ class PostoController extends Controller
             'longitude' => $request->lng
         ];
 
-        return response(Posto::create($data), 201);
+        return response(new JsonPosto(Posto::create($data)), 201);
     }
 
     public function show($id) {
-        return Posto::findOrFail($id);
+        return new JsonPosto(Posto::findOrFail($id));
     }
 
     public function destroy($id) {
-        return Posto::destroy($id);
+        return new JsonPosto(Posto::destroy($id));
     }
 
     public function update(Request $request) {
@@ -98,6 +101,6 @@ class PostoController extends Controller
 
         $posto->save();
 
-        return $posto;
+        return new JsonPosto($posto);
     }
 }
