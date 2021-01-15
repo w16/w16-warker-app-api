@@ -1,0 +1,45 @@
+*** TESTE DE DESENVOLVIMENTO W16 ***
+
+INSTRUÇÕES:
+
+COMPOSER:
+LARAVEL		^8.12
+
+------------------------------
+
+BANCO DE DADOS:
+SGBD	MYSQL
+HOST	LOCALHOST (127.0.0.1)
+PORTA	3306
+BD	TESTE_W16
+USR	ROOT
+PDW	ROOT
+
+** NECESSÁRIA A CRIAÇÃO DO BANCO MANUALMENTE (TESTE_W16) E POSTERIORMENTE, EXECUTAR AS MIGRATIONS DA APLICAÇÃO (TALVEZ SEJA NECESSÁRIA A EXECUÇÃO DO MIGRATE:RESET PREVIAMENTE)
+
+** É POSSÍVEL A EXECUÇÃO DE SEEDS (PHP ARTISAN DB:SEED) PARA INCLUSÃO DE 5 CIDADES E 5 POSTOS (1 POSTO PARA CADA CIDADE)
+
+-----------------------------------------------
+
+ENDPOINTS:
+GET	/cidades 		Lista de todas as cidades cadastradas
+GET	/cidades/incluir 	Formulário de inclusão de nova cidade
+POST	/cidades 		Inclusão de cidade no banco de dados
+GET	/cidades/{id}		Lista uma cidade específica
+GET	/cidades/{id}/editar	Formulário de edição de uma cidade específica
+PUT	/cidades/{id}		Edição de uma cidade específica
+DELETE	/cidades/{id}		Remoção de uma cidade específica
+
+
+GET	/postos			Lista de todos os postos
+GET	/postos/incluir		Formulário de inclusão de um novo posto
+POST	/postos			Inclusão de um posto no banco de dados
+GET	/postos/{id}		Lista um psoto específico
+GET	/postos/{id}/editar	Formulário de edição de um posto específico
+PUT	/postos/{id}		Edição de um posto específico
+DELETE	/postos/{id}		Remoção de um posto específico
+
+
+
+TODOS OS RETORNOS SÃO NO FORMATO JSON, NO MODELO CONFORME SOLICITADO NO TESTE.
+
