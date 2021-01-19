@@ -55,10 +55,10 @@ Para utilizar as outras rotas, é necessário enviar o token de login através d
 
 ## Insomnia
 
-Para facilitar a integração, os endpoints foram exportados do Insomnia para o seguinte arquivo:
+Para facilitar a integração, os endpoints foram exportados do Insomnia para o seguinte arquivo, você pode importar utilizando o Insomnia:
 - Insomnia_2021-01-19.json
 
-É importante criar também um environment com o seguinte JSON:
+É importante criar também um environment, **caso não exista**, com o seguinte JSON:
 ```
 {
   "AUTH_TOKEN": "<INSERIR_TOKEN_DE_LOGIN>"
