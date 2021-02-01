@@ -15,7 +15,7 @@ class CreatePostosTable extends Migration
     {
         Schema::create('postos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('cidade_id')->constrained();
+            $table->foreignId('cidade_id')->constrained()->onDelete('cascade');
             $table->unsignedInteger('reservatorio');
             $table->double('latitude');
             $table->double('longitude');

@@ -14,6 +14,17 @@ class Posto extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        //return parent::toArray($request);
+
+        return [
+            'id' => $this->id,
+            'reservatorio' => $this->reservatorio,
+            'coords' => [
+                'latitude' => $this->latitude,
+                'longitude' => $this->longitude,
+            ],
+            'upodated_at' => $this->updated_at,
+            'created_at' => $this->created_at
+        ];
     }
 }

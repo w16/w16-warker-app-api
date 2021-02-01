@@ -19,6 +19,7 @@ Route::get('/', function (Request $request) {
     if(Auth::check()) {
         $data = [];
         
+        //Geramos um api token caso o usuário logado não tiver
         if(count($request->user()->tokens) == 0) {
             $token = explode('|', $request->user()->createToken('api_token')->plainTextToken);
             $data['api_token'] = $token[1];

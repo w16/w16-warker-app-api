@@ -10,7 +10,13 @@ class Cidade extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nome_da_cidade',
+        'latitude',
+        'longitude'
+    ];
+
     public function postos() {
-        return $this->hasMany('Postos');
+        return $this->hasMany('App\Models\Posto');
     }
 }
