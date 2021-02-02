@@ -19,3 +19,4 @@ env_variables:
   DB_DATABASE: warker
   DB_USERNAME: root
   DB_PASSWORD: 4132
+  DB_SOCKET: "/cloudsql/bid-constru-civil:southamerica-east1:warker"
