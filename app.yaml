@@ -1,7 +1,19 @@
 runtime: php74
 api_version: 1
-threadsafe: true
 
 handlers:
 - url: /public
   script: index.php
+
+env_variables:
+  ## Put production environment variables here.
+  APP_KEY: base64:ne5h3dx1mbfk+oN3HcBf3NtlR8KuMVFeEz04RJkEYj4=
+  APP_STORAGE: /tmp
+  VIEW_COMPILED_PATH: /tmp
+  SESSION_DRIVER: file
+  DB_CONNECTION: mysql
+  DB_HOST: 127.0.0.1
+  DB_PORT: 3306
+  DB_DATABASE: warker
+  DB_USERNAME: root
+  DB_PASSWORD: 4132
