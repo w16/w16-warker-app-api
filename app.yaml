@@ -1,9 +1,5 @@
 runtime: php74
 
-handlers:
-- url: /public
-  script: index.php
-
 env_variables:
   ## Put production environment variables here.
   APP_KEY: base64:ne5h3dx1mbfk+oN3HcBf3NtlR8KuMVFeEz04RJkEYj4=
