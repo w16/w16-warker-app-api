@@ -1,5 +1,18 @@
 # W16 Warker App - API
 
+## Warker Natalino
+Os pessoas precisam de um Natal com paz, e com isso o Warker API está sendo lançado para permitir a navegação eficiente dos usuários.
+
+Instruções:
+Foi utilizado Leaflet Map com Mapbox para o front-end.
+API endpoints para preencher o mapa e outros para gerir a informação.
+Tests unitários nos endpoints
+Laravel Sanctum foi usado para autenticação da API gerando API Tokens que podem ser resetados no dashboard do front-end.
+
+Que todos sobrevivam!
+
+**Yago Rezende**
+
 ## Desenvolvedor
 
 Olá! Muito obrigado por participar da avalição técnica para integrar a equipe de desenvolvimento da W16.
