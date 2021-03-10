@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\PostoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
 
-Route::group(['prefix' => 'v1'], function () {
-    Route::resource('cidades', 'App\Http\Controllers\CidadeController');
-    Route::resource('postos', 'App\Http\Controllers\PostoController');
+Route::group(['middleware' => 'api'], function () {
+
+    Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user', [AuthController::class, 'userProfile']);
+    Route::resource('/cidades', CidadeController::class);
+    Route::resource('/postos', PostoController::class);
 });

@@ -22,6 +22,7 @@ class PostoController extends Controller
     public function __construct(PostoService $postoService)
     {
         $this->postoService = $postoService;
+        $this->middleware('auth:api');
     }
 
     /**

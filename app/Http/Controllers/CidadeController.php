@@ -22,6 +22,7 @@ class CidadeController extends Controller
     public function __construct(CidadeService $cidadeService)
     {
         $this->cidadeService = $cidadeService;
+        $this->middleware('auth:api');
     }
 
     /**
