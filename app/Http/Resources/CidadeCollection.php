@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\PostoCollection;
 
 class CidadeCollection extends JsonResource
 {
@@ -21,6 +22,7 @@ class CidadeCollection extends JsonResource
                 'latitude' => $this->latitude,
                 'longitude' => $this->longitude,
             ],
+            'postos' => PostoCollection::collection($this->postos),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

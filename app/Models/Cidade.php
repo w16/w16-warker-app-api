@@ -21,4 +21,12 @@ class Cidade extends Model
     ];
     protected $guarded = ['id'];
     protected $dates = ['created_at', 'updated_at'];
+
+    /**
+     * Postos relacionados a uma cidade.
+     */
+    public function postos()
+    {
+        return $this->hasMany(Posto::class);
+    }
 }
