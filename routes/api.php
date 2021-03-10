@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'v1'], function () {
     Route::resource('cidades', 'App\Http\Controllers\CidadeController');
+    Route::resource('postos', 'App\Http\Controllers\PostoController');
 });

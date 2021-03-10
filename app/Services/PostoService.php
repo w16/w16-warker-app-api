@@ -3,33 +3,33 @@
 
 namespace App\Services;
 
-use App\Repositories\CidadeRepository;
+use App\Repositories\PostoRepository;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
-use App\Rules\CidadeUnique;
+use App\Rules\PostoUnique;
 
-class CidadeService
+class PostoService
 {
     /**
-     * @var $cidadeRepository
+     * @var $postoRepository
      */
-    protected $cidadeRepository;
+    protected $postoRepository;
 
     /**
-     * Construtor CidadeService.
+     * Construtor PostoService.
      *
-     * @param CidadeRepository $cidadeRepository
+     * @param PostoRepository $postoRepository
      */
-    public function __construct(CidadeRepository $cidadeRepository)
+    public function __construct(PostoRepository $postoRepository)
     {
-        $this->cidadeRepository = $cidadeRepository;
+        $this->postoRepository = $postoRepository;
     }
 
     /**
-     * Deletar cidade por id.
+     * Deletar posto por id.
      *
      * @param $id
      * @return String
@@ -39,13 +39,13 @@ class CidadeService
         DB::beginTransaction();
 
         try {
-            $result = $this->cidadeRepository->delete($id);
+            $result = $this->postoRepository->delete($id);
 
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());
 
-            throw new InvalidArgumentException('Não foi possível deletar esta cidade');
+            throw new InvalidArgumentException('Não foi possível deletar este posto');
         }
 
         DB::commit();
@@ -55,51 +55,56 @@ class CidadeService
     }
 
     /**
-     * Listar todas as cidades.
+     * Listar todas os postos.
      *
      * @return String
      */
     public function getAll()
     {
-        return $this->cidadeRepository->getAll();
+        return $this->postoRepository->getAll();
     }
 
     /**
-     * Listar cidade por id.
+     * Listar posto por id.
      *
      * @param $id
      * @return String
      */
     public function getById($id)
     {
-        return $this->cidadeRepository->getById($id);
+        return $this->postoRepository->getById($id);
     }
 
     /**
-     * Editar dados da cidade
+     * Editar dados do posto
      * Gravar na base se não retornar erros
      *
      * @param array $data
      * @return String
      */
-    public function updateCidade($data, $id)
+    public function updatePosto($data, $id)
     {
         $validator = Validator::make($data, [
-            'nome_da_cidade' => [
+            'cidade_id' => [
                 'required',
-                'min:3',
-                'string',
-                new CidadeUnique('cidades', $id),
+                'integer'
+            ],
+            'reservatorio' => [
+                'required',
+                'integer',
+                'min:0',
+                'max:100',
+                new PostoUnique('postos', $id),
             ],
             'latitude' => [
                 'required',
                 'numeric',
-                new CidadeUnique('cidades', $id),
+                new PostoUnique('postos', $id),
             ],
             'longitude' => [
                 'required',
                 'numeric',
-                new CidadeUnique('cidades', $id),
+                new PostoUnique('postos', $id),
             ],
         ]);
 
@@ -110,13 +115,13 @@ class CidadeService
         DB::beginTransaction();
 
         try {
-            $result = $this->cidadeRepository->update($data, $id);
+            $result = $this->postoRepository->update($data, $id);
 
         } catch (Exception $e) {
             DB::rollBack();
             Log::info($e->getMessage());
 
-            throw new InvalidArgumentException('Não foi possível atualizar os dados da cidade');
+            throw new InvalidArgumentException('Não foi possível atualizar os dados do posto');
         }
 
         DB::commit();
@@ -126,30 +131,35 @@ class CidadeService
     }
 
     /**
-     * Validar dados da cidade.
+     * Validar dados do posto.
      * Gravar na base se não retornar erros
      *
      * @param array $data
      * @return String
      */
-    public function saveCidade($data)
+    public function savePosto($data)
     {
         $validator = Validator::make($data, [
-            'nome_da_cidade' => [
+            'cidade_id' => [
                 'required',
-                'min:3',
-                'string',
-                new CidadeUnique('cidades'),
+                'integer'
+            ],
+            'reservatorio' => [
+                'required',
+                'integer',
+                'min:0',
+                'max:100',
+                new PostoUnique('postos'),
             ],
             'latitude' => [
                 'required',
                 'numeric',
-                new CidadeUnique('cidades'),
+                new PostoUnique('postos'),
             ],
             'longitude' => [
                 'required',
                 'numeric',
-                new CidadeUnique('cidades'),
+                new PostoUnique('postos'),
             ],
         ]);
 
@@ -157,7 +167,7 @@ class CidadeService
             throw new InvalidArgumentException($validator->errors()->first());
         }
 
-        $result = $this->cidadeRepository->save($data);
+        $result = $this->postoRepository->save($data);
 
         return $result;
     }
