@@ -15,7 +15,7 @@ class User extends Authenticatable implements JWTSubject
     use HasFactory, Notifiable;
 
     /**
-     * Os atributos que devem ser atribuidos
+     * The attributes that are mass assignable.
      *
      * @var array
      */

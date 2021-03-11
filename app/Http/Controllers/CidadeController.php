@@ -70,7 +70,7 @@ class CidadeController extends Controller
             'longitude'
         ]);
 
-        $result = ['status' => 200];
+        $result = ['status' => 201];
 
         try {
             $result['data'] = $this->cidadeService->saveCidade($data);
@@ -131,7 +131,7 @@ class CidadeController extends Controller
             'longitude'
         ]);
 
-        $result = ['status' => 200];
+        $result = ['status' => 202];
 
         try {
             $result['data'] = $this->cidadeService->updateCidade($data, $id);
@@ -154,7 +154,7 @@ class CidadeController extends Controller
      */
     public function destroy($id)
     {
-        $result = ['status' => 200];
+        $result = ['status' => 202];
 
         try {
             $result['data'] = $this->cidadeService->deleteById($id);

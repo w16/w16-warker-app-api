@@ -17,14 +17,27 @@ use App\Http\Controllers\PostoController;
 |
 */
 
+// Rota para login
 Route::post('login', [AuthController::class, 'login']);
+
+// Rota para register
 Route::post('register', [AuthController::class, 'register']);
 
+// Rotas apenas para usuários autenticados
 Route::group(['middleware' => 'api'], function () {
 
+    // Rota para logout
     Route::get('/logout', [AuthController::class, 'logout']);
-    Route::get('/refresh', [AuthController::class, 'refresh']);
+
+    // Rota para atualizar o token
+    Route::get('/refresh-token', [AuthController::class, 'refresh']);
+
+    // Rota para mostrar o usuário logado
     Route::get('/user', [AuthController::class, 'userProfile']);
+
+    // Resource de cidades
     Route::resource('/cidades', CidadeController::class);
+
+    // Resource de postos
     Route::resource('/postos', PostoController::class);
 });

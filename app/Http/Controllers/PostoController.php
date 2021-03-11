@@ -71,7 +71,7 @@ class PostoController extends Controller
             'longitude'
         ]);
 
-        $result = ['status' => 200];
+        $result = ['status' => 201];
 
         try {
             $result['data'] = $this->postoService->savePosto($data);
@@ -133,7 +133,7 @@ class PostoController extends Controller
             'longitude'
         ]);
 
-        $result = ['status' => 200];
+        $result = ['status' => 202];
 
         try {
             $result['data'] = $this->postoService->updatePosto($data, $id);
