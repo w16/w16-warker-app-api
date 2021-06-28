@@ -19,7 +19,7 @@ php artisan migrate
 ```
 - Para popular as tabelas do banco de dados, rode o comando abaixo no terminal
 ```
-php artisan migrate
+php artisan db:seed
 ```
 - Para rodar o projeto, execute o comando abaixo no terminal
 ```
