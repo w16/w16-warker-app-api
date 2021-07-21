@@ -15,14 +15,16 @@ class CreatePostosTable extends Migration
     {
         Schema::create('postos', function (Blueprint $table) {
             $table->id();
-            $table->foreign('cidade_id')
-                ->references('id')
-                ->on('cidades')
-                ->onDelete('cascade');
+            // Cria cidade_id e cidade_type
+            $table->morphs('cidade');
             $table->integer('reservatorio');
             $table->double('latitude');
             $table->double('longitude');
             $table->timestamps();
+            $table->foreign('cidade_id')
+                ->references('id')
+                ->on('cidades')
+                ->onDelete('cascade');
         });
     }
 
