@@ -24,8 +24,8 @@ class PostoFactory extends Factory
     {
         return [
             'reservatorio' => $this->faker->numberBetween(0, 100),
-            'longitude' => $this->faker->randomFloat(2, -180, 180),
-            'latitude' => $this->faker->randomFloat(2, -90, 90),
+            'latitude' => $this->faker->randomFloat(8, -90, 90),
+            'longitude' => $this->faker->randomFloat(8, -180, 180),
         ];
     }
 }

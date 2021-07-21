@@ -23,8 +23,8 @@ class CidadeFactory extends Factory
     {
         return [
             'nome_da_cidade' => $this->faker->word,
+            'latitude' => $this->faker->randomFloat(8, -90, 90),
             'longitude' => $this->faker->randomFloat(8, -180, 180),
-            'latitude' => $this->faker->randomFloat(8, -85, 85),
         ];
     }
 }
