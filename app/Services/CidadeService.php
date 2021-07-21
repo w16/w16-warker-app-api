@@ -3,39 +3,39 @@
 namespace App\Services;
 
 use App\Models\Cidade;
-use App\Http\Resources\Object as ObjectResource;
+use App\Http\Resources\Entity as EntityResource;
 
 class CidadeService
 {
     /**
      * Pegar uma cidade
      *
-     * @return \App\Resource\Object
+     * @return \App\Resource\Entity
      */
     public function get($id)
     {
-        return new ObjectResource(Cidade::findOrFail($id)->load(['postos']));
+        return new EntityResource(Cidade::findOrFail($id)->load(['postos']));
     }
 
     /**
      * Pegar todas as cidades
      *
-     * @return \App\Resource\Object
+     * @return \App\Resource\Entity
      */
     public function getAll()
     {
-        return ObjectResource::collection(Cidade::all()->load(['postos']));
+        return EntityResource::collection(Cidade::all()->load(['postos']));
     }
 
     /**
      * Criar uma cidade
      *
      * @param array $data
-     * @return \App\Resource\Object
+     * @return \App\Resource\Entity
      */
     public function create($data)
     {
-        return new ObjectResource(Cidade::create($data)->load(['postos']));
+        return new EntityResource(Cidade::create($data)->load(['postos']));
     }
 
     /**
@@ -43,7 +43,7 @@ class CidadeService
      *
      * @param int $id
      * @param array $data
-     * @return \App\Resource\Object
+     * @return \App\Resource\Entity
      */
     public function update($id, $data)
     {
@@ -57,7 +57,7 @@ class CidadeService
 
         $cidade->save();
 
-        return ObjectResource::collection($cidade->load(['postos']));
+        return EntityResource::collection($cidade->load(['postos']));
     }
 
     /**

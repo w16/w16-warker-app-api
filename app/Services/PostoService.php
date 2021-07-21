@@ -3,39 +3,39 @@
 namespace App\Services;
 
 use App\Models\Posto;
-use App\Http\Resources\Object as ObjectResource;
+use App\Http\Resources\Entity as EntityResource;
 
 class PostoService
 {
     /**
      * Pegar uma posto
      *
-     * @return \App\Resource\Object
+     * @return \App\Resource\Entity
      */
     public function get($id)
     {
-        return new ObjectResource(Posto::findOrFail($id));
+        return new EntityResource(Posto::findOrFail($id));
     }
 
     /**
      * Pegar todas as postos
      *
-     * @return \App\Resource\Object
+     * @return \App\Resource\Entity
      */
     public function getAll()
     {
-        return ObjectResource::collection(Posto::all());
+        return EntityResource::collection(Posto::all());
     }
 
     /**
      * Criar uma posto
      *
      * @param array $data
-     * @return \App\Resource\Object
+     * @return \App\Resource\Entity
      */
     public function create($data)
     {
-        return new ObjectResource(Posto::create($data));
+        return new EntityResource(Posto::create($data));
     }
 
     /**
@@ -43,7 +43,7 @@ class PostoService
      *
      * @param int $id
      * @param array $data
-     * @return \App\Resource\Object
+     * @return \App\Resource\Entity
      */
     public function update($id, $data)
     {
@@ -57,7 +57,7 @@ class PostoService
 
         $posto->save();
 
-        return ObjectResource::collection($posto);
+        return EntityResource::collection($posto);
     }
 
     /**
