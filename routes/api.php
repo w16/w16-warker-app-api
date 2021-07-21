@@ -21,6 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
-    'cidades' => CidadeController::class,
-    'postos' => PostoController::class,
+    'cidade' => CidadeController::class,
+    'posto' => PostoController::class,
 ]);
