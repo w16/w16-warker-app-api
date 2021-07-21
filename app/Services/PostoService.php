@@ -4,11 +4,15 @@ namespace App\Services;
 
 use App\Http\Resources\Posto as PostoResource;
 use App\Models\Posto;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostoService
 {
+    private static function throwNotFound()
+    {
+        throw new NotFoundHttpException('Não foi possível encontrar o posto especificado');
+    }
     /**
      * Pegar uma posto
      *
@@ -16,7 +20,11 @@ class PostoService
      */
     public function get($id)
     {
-        return new PostoResource(Posto::findOrFail($id));
+        try {
+            return new PostoResource(Posto::findOrFail($id));
+        } catch (ModelNotFoundException $e) {
+            $this->throwNotFound();
+        }
     }
 
     /**
@@ -39,12 +47,9 @@ class PostoService
     {
         $cidadeService = new CidadeService();
 
-        try {
-            $cidade = $cidadeService->get($data['cidade_id']);
-            return new PostoResource($cidade->posto()->create($data));
-        } catch (ModelNotFoundException $e) {
-            throw new NotFoundHttpException('Não foi possível encontrar a cidade especificada');
-        }
+        $cidade = $cidadeService->get($data['cidade_id']);
+
+        return new PostoResource($cidade->posto()->create($data));
     }
 
     /**
@@ -56,17 +61,21 @@ class PostoService
      */
     public function update($id, $data)
     {
-        $posto = Posto::findOrFail($id);
+        try {
+            $posto = Posto::findOrFail($id);
 
-        foreach ($posto->getFillable() as $field) {
-            if (isset($data[$field])) {
-                $posto[$field] = $data[$field];
+            foreach ($posto->getFillable() as $field) {
+                if (isset($data[$field])) {
+                    $posto[$field] = $data[$field];
+                }
             }
+
+            $posto->save();
+
+            return new PostoResource($posto);
+        } catch (ModelNotFoundException $e) {
+            $this->throwNotFound();
         }
-
-        $posto->save();
-
-        return new PostoResource($posto);
     }
 
     /**
@@ -76,6 +85,10 @@ class PostoService
      */
     public function delete($id)
     {
-        Posto::findOrFail($id)->delete();
+        try {
+            Posto::findOrFail($id)->delete();
+        } catch (ModelNotFoundException $e) {
+            return response(['error' => $e->getMessage()], 404);
+        }
     }
 }

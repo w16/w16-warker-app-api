@@ -4,9 +4,16 @@ namespace App\Services;
 
 use App\Http\Resources\Cidade as CidadeResource;
 use App\Models\Cidade;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CidadeService
 {
+    private static function throwNotFound()
+    {
+        throw new NotFoundHttpException('Não foi possível encontrar a cidade especificada');
+    }
+
     /**
      * Pegar uma cidade
      *
@@ -14,7 +21,11 @@ class CidadeService
      */
     public function get($id)
     {
-        return new CidadeResource(Cidade::findOrFail($id));
+        try {
+            return new CidadeResource(Cidade::findOrFail($id));
+        } catch (ModelNotFoundException $e) {
+            $this->throwNotFound();
+        }
     }
 
     /**
@@ -47,17 +58,21 @@ class CidadeService
      */
     public function update($id, $data)
     {
-        $cidade = Cidade::findOrFail($id);
+        try {
+            $cidade = Cidade::findOrFail($id);
 
-        foreach ($cidade->getFillable() as $field) {
-            if (isset($data[$field])) {
-                $cidade[$field] = $data[$field];
+            foreach ($cidade->getFillable() as $field) {
+                if (isset($data[$field])) {
+                    $cidade[$field] = $data[$field];
+                }
             }
+
+            $cidade->save();
+
+            return new CidadeResource($cidade);
+        } catch (ModelNotFoundException $e) {
+            $this->throwNotFound();
         }
-
-        $cidade->save();
-
-        return new CidadeResource($cidade);
     }
 
     /**
@@ -67,6 +82,10 @@ class CidadeService
      */
     public function delete($id)
     {
-        Cidade::findOrFail($id)->delete();
+        try {
+            Cidade::findOrFail($id)->delete();
+        } catch (ModelNotFoundException $e) {
+            $this->throwNotFound();
+        }
     }
 }
