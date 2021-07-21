@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
+use App\Http\Resources\Cidade as CidadeResource;
 use App\Models\Cidade;
-use App\Http\Resources\Entity as EntityResource;
 
 class CidadeService
 {
@@ -14,7 +14,7 @@ class CidadeService
      */
     public function get($id)
     {
-        return new EntityResource(Cidade::findOrFail($id)->load(['postos']));
+        return new CidadeResource(Cidade::findOrFail($id)->load(['postos']));
     }
 
     /**
@@ -24,7 +24,7 @@ class CidadeService
      */
     public function getAll()
     {
-        return EntityResource::collection(Cidade::all()->load(['postos']));
+        return CidadeResource::collection(Cidade::all()->load(['postos']));
     }
 
     /**
@@ -35,7 +35,7 @@ class CidadeService
      */
     public function create($data)
     {
-        return new EntityResource(Cidade::create($data)->load(['postos']));
+        return new CidadeResource(Cidade::create($data)->load(['postos']));
     }
 
     /**
@@ -57,7 +57,7 @@ class CidadeService
 
         $cidade->save();
 
-        return EntityResource::collection($cidade->load(['postos']));
+        return CidadeResource::collection($cidade->load(['postos']));
     }
 
     /**

@@ -20,7 +20,7 @@ class PostoController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \App\Http\Resources\Entity
+     * @return \App\Http\Resources\Posto
      */
     public function index()
     {
@@ -31,7 +31,7 @@ class PostoController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\CreatePostoRequest $request
-     * @return \App\Http\Resources\Entity
+     * @return \App\Http\Resources\Posto
      */
     public function store(CreatePostoRequest $request)
     {
@@ -42,7 +42,7 @@ class PostoController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \App\Http\Resources\Entity
+     * @return \App\Http\Resources\Posto
      */
     public function show($id)
     {
@@ -54,7 +54,7 @@ class PostoController extends Controller
      *
      * @param  \App\Http\Requests\UpdatePostoRequest $request
      * @param  int  $id
-     * @return \App\Http\Resources\Entity
+     * @return \App\Http\Resources\Posto
      */
     public function update(UpdatePostoRequest $request, $id)
     {
@@ -65,7 +65,7 @@ class PostoController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \App\Http\Resources\Entity
+     * @return \App\Http\Resources\Posto
      */
     public function destroy($id)
     {
