@@ -14,7 +14,7 @@ class CidadeService
      */
     public function get($id)
     {
-        return new CidadeResource(Cidade::findOrFail($id)->load(['postos']));
+        return new CidadeResource(Cidade::findOrFail($id));
     }
 
     /**
@@ -24,7 +24,7 @@ class CidadeService
      */
     public function getAll()
     {
-        return CidadeResource::collection(Cidade::all()->load(['postos']));
+        return CidadeResource::collection(Cidade::all());
     }
 
     /**
@@ -35,7 +35,7 @@ class CidadeService
      */
     public function create($data)
     {
-        return new CidadeResource(Cidade::create($data)->load(['postos']));
+        return new CidadeResource(Cidade::create($data));
     }
 
     /**
@@ -57,7 +57,7 @@ class CidadeService
 
         $cidade->save();
 
-        return CidadeResource::collection($cidade->load(['postos']));
+        return CidadeResource::collection($cidade);
     }
 
     /**
