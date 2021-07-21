@@ -19,4 +19,9 @@ class Cidade extends Model
     {
         return $this->morphMany(Posto::class, 'cidade');
     }
+
+    public function posto()
+    {
+        return $this->morphOne(Posto::class, 'cidade');
+    }
 }

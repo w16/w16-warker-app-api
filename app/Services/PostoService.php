@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Http\Resources\Posto as PostoResource;
 use App\Models\Posto;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PostoService
 {
@@ -35,7 +37,14 @@ class PostoService
      */
     public function create($data)
     {
-        return new PostoResource(Posto::create($data));
+        $cidadeService = new CidadeService();
+
+        try {
+            $cidade = $cidadeService->get($data['cidade_id']);
+            return new PostoResource($cidade->posto()->create($data));
+        } catch (ModelNotFoundException $e) {
+            throw new NotFoundHttpException('Não foi possível encontrar a cidade especificada');
+        }
     }
 
     /**

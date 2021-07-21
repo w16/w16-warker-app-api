@@ -7,6 +7,7 @@ use App\Http\Requests\CreatePostoRequest;
 use App\Http\Requests\UpdatePostoRequest;
 use App\Services\PostoService;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PostoController extends Controller
 {
@@ -35,7 +36,11 @@ class PostoController extends Controller
      */
     public function store(CreatePostoRequest $request)
     {
-        return response($this->service->create($request->all()), 201);
+        try {
+            return response($this->service->create($request->all()), 201);
+        } catch (NotFoundHttpException $e) {
+            return response(['error' => $e->getMessage()], 404);
+        }
     }
 
     /**
