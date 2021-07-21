@@ -25,9 +25,9 @@ class CreatePostoRequest extends FormRequest
     {
         return [
             'cidade_id' => 'required|numeric',
-            'reservatorio' => 'required|numeric|between:0,100.00',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
+            'reservatorio' => 'required|numeric|between:0,100',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
         ];
     }
 }

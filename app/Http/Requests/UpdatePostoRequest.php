@@ -24,9 +24,9 @@ class UpdatePostoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome_da_cidade' => 'string',
-            'latitude' => 'numeric',
-            'longitude' => 'numeric',
+            'reservatorio' => 'numeric|between:0,100',
+            'latitude' => 'numeric|between:-90,90',
+            'longitude' => 'numeric|between:-180,180',
         ];
     }
 }

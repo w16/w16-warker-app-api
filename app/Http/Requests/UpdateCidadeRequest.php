@@ -24,9 +24,9 @@ class UpdateCidadeRequest extends FormRequest
     public function rules()
     {
         return [,
-            'reservatorio' => 'required|numeric|between:0,100.00',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric',
+            'nome_da_cidade' => 'string',
+            'latitude' => 'numeric|between:-90,90',
+            'longitude' => 'numeric|between:-180,180',
         ];
     }
 }
