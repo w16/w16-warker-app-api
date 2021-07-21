@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Services;
+namespace App\Services;
 
 use App\Models\Posto;
-use App\Resource\Object as ObjectResource;
+use App\Http\Resources\Object as ObjectResource;
 
 class PostoService
 {
