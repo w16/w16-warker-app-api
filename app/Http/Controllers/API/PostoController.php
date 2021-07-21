@@ -24,7 +24,7 @@ class PostoController extends Controller
      */
     public function index()
     {
-        return $this->service->getAll();
+        return response($this->service->getAll());
     }
 
     /**
@@ -35,7 +35,7 @@ class PostoController extends Controller
      */
     public function store(CreatePostoRequest $request)
     {
-        return $this->service->create($request->all());
+        return response($this->service->create($request->all()), 201);
     }
 
     /**
@@ -46,7 +46,7 @@ class PostoController extends Controller
      */
     public function show($id)
     {
-        return $this->service->get($id);
+        return response($this->service->get($id));
     }
 
     /**
@@ -58,7 +58,7 @@ class PostoController extends Controller
      */
     public function update(UpdatePostoRequest $request, $id)
     {
-        return $this->service->update($id, $request->all());
+        return response($this->service->update($id, $request->all()));
     }
 
     /**
@@ -69,6 +69,6 @@ class PostoController extends Controller
      */
     public function destroy($id)
     {
-        return $this->destroy->get($id);
+        return response($this->service->delete($id), 204);
     }
 }
