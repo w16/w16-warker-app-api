@@ -57,7 +57,7 @@ class CidadeService
 
         $cidade->save();
 
-        return CidadeResource::collection($cidade);
+        return new CidadeResource($cidade);
     }
 
     /**

@@ -66,7 +66,7 @@ class PostoService
 
         $posto->save();
 
-        return PostoResource::collection($posto);
+        return new PostoResource($posto);
     }
 
     /**
