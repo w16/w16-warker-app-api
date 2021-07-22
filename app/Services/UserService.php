@@ -48,7 +48,7 @@ class UserService
         $user = User::where('email', $input['email'])->first();
 
         if (!($user && Hash::check($input['password'], $user->password))) {
-            throw new UnauthorizedHttpException('Email ou senha estão incorretos');
+            throw new UnauthorizedHttpException('login', 'Email ou senha estão incorretos');
         }
 
         return $user->createToken('api_token')->plainTextToken;
