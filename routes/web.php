@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\PostoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::group(['auth:sanctum', 'verified'], function () {
     Route::resource('cidades', CidadeController::class);
+    Route::resource('postos', PostoController::class);
 });
