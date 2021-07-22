@@ -18,10 +18,16 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
     - Composer versão 2.0.12
     - Git versão 2.30.1.windows.1
     - Node.js versão 14.15.5
+    - Postman versão 8.7.0
 - Utilizei somente servidor web do artisan.
 - Utilizei somente base de dados SQLite.
 - Todas as instruções abaixo foram escritas somente para plataforma Windows.
 - Não foi testado em outros sistemas.
+
+## Requisitos do projeto
+- PHP 7
+- Node.js 14
+- Composer 2
 
 ## (Opcional) Instalação das ferramentas
 - Faça o [download do XAMPP](https://www.apachefriends.org/pt_br/download.html) e instale.
@@ -46,7 +52,7 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
     ```
 - **(Opcional)** Faça o clone do projeto em um local de sua preferência. Ao terminar o processo, mude para o local do projeto.
     ```
-    git clone https://github.com/mobx7c7/w16-warker-app-api && cd w16-warker-app-api
+    git clone <endereço_repo_git> && cd w16-warker-app-api
     ```
 - Instale as dependências de projeto.
     ```
@@ -54,7 +60,7 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
     npm init dev
     ```
 - Faça uma cópia do arquivo `.env.example` e renomeie-o para `.env`
-- Configurando base de dados sqlite:
+- Configurar base de dados para sqlite:
     - Crie `database.sqlite` dentro da pasta `database`
     - Abra arquivo `.env` e ajuste as seguintes linhas:
         ```
@@ -67,24 +73,36 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
         ```
 - Inicialize a base de dados com os comandos a seguir:
     ```
-    php artisan migrate
+    php artisan migrate;
     php artisan db:seed --class=DatabaseSeeder
     ```
-- Execute o servidor de desenvolvimento do artisan
+- Execute o servidor de desenvolvimento
     ```
     php artisan serve
     ```
 
-## Resolução de possíveis problemas
-- **PHP** Não está presente no ambiente
-    - Opção 1 (Permanente)
-        - Adicione caminho para o `php.exe` na variável de ambiente `PATH` nas configurações avançadas do sistema (Ex: `C:\xampp\php`)
-        - **Sistema > Configurações Avançadas do Sistema > Aba "Avançado" > Botão "Variáveis de Ambiente"**
-    - Opção 2 (Temporária)
-        - Com uma janela de prompt de comando aberta, execute `set PATH=%PATH%;<caminho_instalacao_php>`
+## Teste automatizado
+- Execute o comando abaixo
+    ```php
+    php artisan test
+    ```
 
-# Projeto
-## Checklist
+## Teste manual api
+### Instruções
+- Busque a tabela de rotas da api que está abaixo deste documento e tenha-o como referência para as etapas a seguir.
+- Crie uma conta de usuário utilizando a endpoint `/api/register` e espere receber uma token de autorização. 
+    - Esta token será usado para ter acesso as operações de CRUD das cidades e dos postos.
+- Comece a fazer requisições sempre enviando as informações
+    - Token como "Bearer Token" junto ao cabeçalho.
+    - Accept: application/json
+- Não tenho mais nada para dizer. Todas as informações de métodos, rotas e parâmetros estão na tabela.
+
+## Teste manual web
+- Crie uma conta de usuário utilizando a rota `/register`
+- Quando tiver dentro do painel de controle, você verá duas abas: "Cidades" e "Postos"
+- Explore as opções de cada aba e só.
+
+## Checklist de projeto
 - [x] API para operações CRUD de cidades e postos.
 - [x] CRUD Web
 - [x] Autenticação (Web/API)
@@ -97,15 +115,15 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
 - [x] Mantenha o código limpo e organizado.
 - [x] Uso de migrations, factories, estrutura MVC, rotas...
  
-## Notas
-- API possui operações CRU para usuários. (Sim, não tem DELETE)
+## Notas de projeto
+- API possui operações CRU para usuários. (Sim, não tem DELETE e somente dá de remover através da interface web)
 - Os casos de teste que eu desenvolvi estão em `tests/Feature/API`
 - Sobre comentários, documentação...
     - Utilizei notação PHPDoc para documentar algumas funções. 
     - Também há alguns locais que possuem comentário no local.
     - Desconheço notações padrão para documentar rotas de api, então fiz uma seção abaixo com informações básicas da api que desenvolvi.
 
-# Operações da API REST
+# API REST
 ## Tabela de operações
 | Método    | Endpoint          | Requer Auth | Descrição                               | Query                                        | Resposta | Codigo |
 | --------- | ----------------- | ----------- | --------------------------------------- | -------------------------------------------- | -------- | ------ |
@@ -191,3 +209,11 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
         "message": "Unauthenticated."
     }
     ```
+
+## Resolução de possíveis problemas
+- **PHP** Não está presente no ambiente
+    - Opção 1 (Permanente)
+        - Adicione caminho para o `php.exe` na variável de ambiente `PATH` nas configurações avançadas do sistema (Ex: `C:\xampp\php`)
+        - **Sistema > Configurações Avançadas do Sistema > Aba "Avançado" > Botão "Variáveis de Ambiente"**
+    - Opção 2 (Temporária)
+        - Com uma janela de prompt de comando aberta, execute `set PATH=%PATH%;<caminho_instalacao_php>`
