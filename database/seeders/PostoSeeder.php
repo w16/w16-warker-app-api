@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Posto;
+use Illuminate\Database\Seeder;
 
 class PostoSeeder extends Seeder
 {
@@ -14,8 +14,6 @@ class PostoSeeder extends Seeder
      */
     public function run()
     {
-        Posto::factory()
-            ->count(10)
-            ->create();
+        Posto::factory()->count(20)->create();
     }
 }

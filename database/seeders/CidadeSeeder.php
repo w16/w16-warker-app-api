@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Cidade;
+use Illuminate\Database\Seeder;
 
 class CidadeSeeder extends Seeder
 {
@@ -14,9 +14,6 @@ class CidadeSeeder extends Seeder
      */
     public function run()
     {
-        Cidade::factory()
-            ->count(10)
-            ->hasPostos(5)
-            ->create();
+        Cidade::factory()->count(4)->create();
     }
 }
