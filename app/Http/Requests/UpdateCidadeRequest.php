@@ -23,7 +23,7 @@ class UpdateCidadeRequest extends FormRequest
      */
     public function rules()
     {
-        return [,
+        return [
             'nome_da_cidade' => 'string',
             'latitude' => 'numeric|between:-90,90',
             'longitude' => 'numeric|between:-180,180',
