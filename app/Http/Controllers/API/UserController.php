@@ -36,7 +36,7 @@ class UserController extends Controller
      */
     public function login(LoginUserRequest $request)
     {
-        return response(['token' => $this->service->login($request->all())]);
+        return response(['token' => $this->service->login($request->validated())]);
     }
 
     /**
@@ -47,7 +47,7 @@ class UserController extends Controller
      */
     public function register(RegisterUserRequest $request)
     {
-        return response(['token' => $this->service->create($request->all())], 201);
+        return response(['token' => $this->service->create($request->validated())], 201);
     }
 
     /**
@@ -57,7 +57,7 @@ class UserController extends Controller
      */
     public function updateProfile(UpdateUserProfileRequest $request)
     {
-        return response($this->service->update($request->all()));
+        return response($this->service->update($request->validated()));
     }
 
     /**

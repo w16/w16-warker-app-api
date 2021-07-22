@@ -35,7 +35,7 @@ class CidadeController extends Controller
      */
     public function store(CreateCidadeRequest $request)
     {
-        return response($this->service->create($request->all()), 201);
+        return response($this->service->create($request->validated()), 201);
     }
 
     /**
@@ -58,7 +58,7 @@ class CidadeController extends Controller
      */
     public function update(UpdateCidadeRequest $request, $id)
     {
-        return response($this->service->update($id, $request->all()));
+        return response($this->service->update($id, $request->validated()));
     }
 
     /**
