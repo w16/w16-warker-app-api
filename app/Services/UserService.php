@@ -9,6 +9,10 @@ use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class UserService
 {
+    private function createApiTokenFrom($user)
+    {
+        return $user->createToken('api_token')->plainTextToken;
+    }
     /**
      * Retorna usuário autorizado
      *
@@ -33,7 +37,7 @@ class UserService
             'password' => Hash::make($input['password']),
         ]);
 
-        return $user->createToken('api_token')->plainTextToken;
+        return $this->createApiTokenFrom($user);
     }
 
     /**
@@ -51,7 +55,7 @@ class UserService
             throw new UnauthorizedHttpException('login', 'Email ou senha estão incorretos');
         }
 
-        return $user->createToken('api_token')->plainTextToken;
+        return $this->createApiTokenFrom($user);
     }
 
     /**
@@ -75,6 +79,6 @@ class UserService
     {
         $user = auth()->user();
 
-        return $user->createToken('api_token')->plainTextToken;
+        return $this->createApiTokenFrom($user);
     }
 }
