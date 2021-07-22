@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/token', [UserController::class, 'newToken']);
     Route::get('/user', [UserController::class, 'index']);
-    Route::put('/user', [UserController::class, 'update']);
+    Route::put('/user', [UserController::class, 'updateProfile']);
     Route::apiResources([
         'cidade' => CidadeController::class,
         'posto' => PostoController::class,

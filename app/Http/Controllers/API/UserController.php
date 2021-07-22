@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\RegisterUserRequest;
+use App\Http\Requests\UpdateUserProfileRequest;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -47,6 +48,16 @@ class UserController extends Controller
     public function register(RegisterUserRequest $request)
     {
         return response(['token' => $this->service->create($request->all())], 201);
+    }
+
+    /**
+     * Alterar dados de perfil do usuário autorizado
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateProfile(UpdateUserProfileRequest $request)
+    {
+        return response($this->service->update($request->all()));
     }
 
     /**

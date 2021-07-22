@@ -59,6 +59,34 @@ class UserService
     }
 
     /**
+     * Alterar dados do usuário autorizado
+     *
+     * @param array $input lista de pares chave/valor para atualizar objeto existente
+     * @return \App\Resource\User
+     */
+    public function update($input)
+    {
+        $user = auth()->user();
+
+        foreach ($user->getFillable() as $field) {
+            if (isset($input[$field])) {
+                switch ($field) {
+                    case 'password':
+                        $user[$field] = Hash::make($input[$field]);
+                        break;
+                    default:
+                        $user[$field] = $input[$field];
+                        break;
+                }
+            }
+        }
+
+        $user->save();
+
+        return new UserResource($user);
+    }
+
+    /**
      * Remover todas as autorizações do usuário autorizado
      *
      * @return void
