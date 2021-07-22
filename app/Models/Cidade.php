@@ -17,11 +17,11 @@ class Cidade extends Model
 
     public function postos()
     {
-        return $this->morphMany(Posto::class, 'cidade');
+        return $this->hasMany(Posto::class);
     }
 
     public function posto()
     {
-        return $this->morphOne(Posto::class, 'cidade');
+        return $this->hasOne(Posto::class);
     }
 }
