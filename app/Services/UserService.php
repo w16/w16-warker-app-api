@@ -22,8 +22,8 @@ class UserService
     /**
      * Criar novo usuário
      *
-     * @param array $input strings de dados necessários para registro de nova conta
-     * @return \App\Resource\User
+     * @param array $input lista de pares chave/valor de dados necessários para criação de nova conta
+     * @return string token de autorização
      */
     public function create($input)
     {
@@ -39,8 +39,8 @@ class UserService
     /**
      * Autenticar usuário registrado
      *
-     * @param array $input strings dados pertinentes ao usuário registrado
-     * @throws UnauthorizedHttpException para problemas com email ou senha
+     * @param array $input lista de pares chave/valor de dados pertinentes ao usuário registrado
+     * @throws UnauthorizedHttpException quando houver problemas com email ou senha
      * @return string token de autorização
      */
     public function login($input)
@@ -67,9 +67,9 @@ class UserService
     }
 
     /**
-     * Gerar novo token para o usuário autorizado
+     * Gerar novo token de autorização do usuário autorizado
      *
-     * @return string token de autorização
+     * @return string novo token de autorização
      */
     public function generateToken()
     {

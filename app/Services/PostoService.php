@@ -14,8 +14,10 @@ class PostoService
         throw new NotFoundHttpException('Não foi possível encontrar o posto especificado');
     }
     /**
-     * Pegar uma posto
+     * Pegar um objeto registrado
      *
+     * @param int $id número de identificação do objeto
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException quando não encontrar objeto
      * @return \App\Resource\Posto
      */
     public function get($id)
@@ -28,7 +30,7 @@ class PostoService
     }
 
     /**
-     * Pegar todas as postos
+     * Pegar todos os objetos registrados
      *
      * @return \App\Resource\Posto
      */
@@ -38,35 +40,36 @@ class PostoService
     }
 
     /**
-     * Criar uma posto
+     * Criar um objeto
      *
-     * @param array $data
+     * @param array $input lista de pares chave/valor para criar novo objeto
      * @return \App\Resource\Posto
      */
-    public function create($data)
+    public function create($input)
     {
         $cidadeService = new CidadeService();
 
-        $cidade = $cidadeService->get($data['cidade_id']);
+        $cidade = $cidadeService->get($input['cidade_id']);
 
-        return new PostoResource($cidade->posto()->create($data));
+        return new PostoResource($cidade->posto()->create($input));
     }
 
     /**
-     * Alterar uma posto
+     * Alterar um objeto
      *
-     * @param int $id
-     * @param array $data
+     * @param int $id número de identificação do objeto
+     * @param array $input lista de pares chave/valor para atualizar objeto existente
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException quando não encontrar objeto
      * @return \App\Resource\Posto
      */
-    public function update($id, $data)
+    public function update($id, $input)
     {
         try {
             $posto = Posto::findOrFail($id);
 
             foreach ($posto->getFillable() as $field) {
-                if (isset($data[$field])) {
-                    $posto[$field] = $data[$field];
+                if (isset($input[$field])) {
+                    $posto[$field] = $input[$field];
                 }
             }
 
@@ -79,16 +82,17 @@ class PostoService
     }
 
     /**
-     * Remover uma posto
+     * Remover um objeto
      *
-     * @param int $id
+     * @param int $id número de identificação do objeto
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException quando não encontrar objeto
      */
     public function delete($id)
     {
         try {
             Posto::findOrFail($id)->delete();
         } catch (ModelNotFoundException $e) {
-            return response(['error' => $e->getMessage()], 404);
+            $this->throwNotFound();
         }
     }
 }

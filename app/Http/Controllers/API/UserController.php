@@ -18,7 +18,7 @@ class UserController extends Controller
     }
 
     /**
-     * Pegar usuário da sessão
+     * Pegar dados do usuário autorizado
      *
      * @return \Illuminate\Http\Response
      */

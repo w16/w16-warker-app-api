@@ -20,7 +20,7 @@ class CidadeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \App\Http\Resources\Cidade
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -31,7 +31,7 @@ class CidadeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\CreateCidadeRequest  $request
-     * @return \App\Http\Resources\Cidade
+     * @return \Illuminate\Http\Response
      */
     public function store(CreateCidadeRequest $request)
     {
@@ -42,7 +42,7 @@ class CidadeController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \App\Http\Resources\Cidade
+     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
@@ -54,7 +54,7 @@ class CidadeController extends Controller
      *
      * @param  \App\Http\Requests\UpdateCidadeRequest  $request
      * @param  int  $id
-     * @return \App\Http\Resources\Cidade
+     * @return \Illuminate\Http\Response
      */
     public function update(UpdateCidadeRequest $request, $id)
     {
@@ -65,7 +65,7 @@ class CidadeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \App\Http\Resources\Cidade
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {

@@ -15,9 +15,11 @@ class CidadeService
     }
 
     /**
-     * Pegar uma cidade
+     * Pegar um objeto registrado
      *
-     * @return \App\Resource\Entity
+     * @param int $id número de identificação do objeto
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException quando não encontrar objeto
+     * @return \App\Http\Resources\Cidade
      */
     public function get($id)
     {
@@ -29,9 +31,9 @@ class CidadeService
     }
 
     /**
-     * Pegar todas as cidades
+     * Pegar todos os objetos de registrados
      *
-     * @return \App\Resource\Entity
+     * @return \App\Http\Resources\Cidade
      */
     public function getAll()
     {
@@ -39,31 +41,32 @@ class CidadeService
     }
 
     /**
-     * Criar uma cidade
+     * Criar um objeto
      *
-     * @param array $data
-     * @return \App\Resource\Entity
+     * @param array $input lista de pares chave/valor para criar novo objeto
+     * @return \App\Http\Resources\Cidade
      */
-    public function create($data)
+    public function create($input)
     {
-        return new CidadeResource(Cidade::create($data));
+        return new CidadeResource(Cidade::create($input));
     }
 
     /**
-     * Alterar uma cidade
+     * Alterar um objeto
      *
-     * @param int $id
-     * @param array $data
-     * @return \App\Resource\Entity
+     * @param int $id número de identificação do objeto
+     * @param array $input lista de pares chave/valor para atualizar objeto existente
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException quando não encontrar objeto
+     * @return \App\Http\Resources\Cidade
      */
-    public function update($id, $data)
+    public function update($id, $input)
     {
         try {
             $cidade = Cidade::findOrFail($id);
 
             foreach ($cidade->getFillable() as $field) {
-                if (isset($data[$field])) {
-                    $cidade[$field] = $data[$field];
+                if (isset($input[$field])) {
+                    $cidade[$field] = $input[$field];
                 }
             }
 
@@ -76,9 +79,11 @@ class CidadeService
     }
 
     /**
-     * Remover uma cidade
+     * Remover um objeto
      *
-     * @param int $id
+     * @param int $id número de identificação do objeto
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException quando não encontrar objeto
+     * @return void
      */
     public function delete($id)
     {
