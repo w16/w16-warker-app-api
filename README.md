@@ -57,7 +57,8 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
 - Instale as dependências de projeto.
     ```
     composer install
-    npm init dev
+    npm install
+    npm run dev
     ```
 - Faça uma cópia do arquivo `.env.example` e renomeie-o para `.env`
 - Configurar base de dados para sqlite:
