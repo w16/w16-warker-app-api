@@ -23,6 +23,7 @@ class PostoFactory extends Factory
     public function definition()
     {
         return [
+            'cidade_id' => $this->faker->randomElement(Cidade::all()->pluck('id')->toArray()),
             'reservatorio' => $this->faker->numberBetween(0, 100),
             'latitude' => $this->faker->randomFloat(8, -90, 90),
             'longitude' => $this->faker->randomFloat(8, -180, 180),
