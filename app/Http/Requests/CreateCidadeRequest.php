@@ -24,7 +24,7 @@ class CreateCidadeRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome_da_cidade' => 'required|string',
+            'nome_da_cidade' => 'required|string|unique:App\Models\Cidade,nome_da_cidade',
             'latitude' => 'required|numeric|between:-90,90',
             'longitude' => 'required|numeric|between:-180,180',
         ];
