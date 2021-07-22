@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Http\Services;
 
 use App\Http\Resources\User as UserResource;
 use App\Models\User;

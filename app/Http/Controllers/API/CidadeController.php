@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateCidadeRequest;
 use App\Http\Requests\UpdateCidadeRequest;
-use App\Services\CidadeService;
+use App\Http\Services\CidadeService;
 use Illuminate\Http\Request;
 
 class CidadeController extends Controller

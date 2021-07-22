@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePostoRequest;
 use App\Http\Requests\UpdatePostoRequest;
-use App\Services\PostoService;
+use App\Http\Services\PostoService;
 use Illuminate\Http\Request;
 
 class PostoController extends Controller
