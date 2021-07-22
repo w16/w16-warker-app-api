@@ -51,7 +51,7 @@ class UserController extends Controller
     }
 
     /**
-     * Alterar dados de perfil do usuário autorizado
+     * Atualizar dados de perfil do usuário autorizado
      *
      * @return \Illuminate\Http\Response
      */

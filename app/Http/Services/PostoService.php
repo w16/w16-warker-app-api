@@ -55,7 +55,7 @@ class PostoService
     }
 
     /**
-     * Alterar um objeto
+     * Atualizar um objeto
      *
      * @param int $id número de identificação do objeto
      * @param array $input lista de pares chave/valor para atualizar objeto existente

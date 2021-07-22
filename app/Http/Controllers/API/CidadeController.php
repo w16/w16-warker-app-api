@@ -18,7 +18,7 @@ class CidadeController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Pegar todos os registros de cidade
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,7 +28,7 @@ class CidadeController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Atualizar um registro de cidade por id
      *
      * @param  \App\Http\Requests\CreateCidadeRequest  $request
      * @return \Illuminate\Http\Response
@@ -39,7 +39,7 @@ class CidadeController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Pegar um registro de cidade por id 
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -50,7 +50,7 @@ class CidadeController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Atualizar um registro de cidade por id
      *
      * @param  \App\Http\Requests\UpdateCidadeRequest  $request
      * @param  int  $id
@@ -62,7 +62,7 @@ class CidadeController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remover um registro de cidade por id
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

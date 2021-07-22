@@ -59,7 +59,7 @@ class UserService
     }
 
     /**
-     * Alterar dados do usuário autorizado
+     * Atualizar dados do usuário autorizado
      *
      * @param array $input lista de pares chave/valor para atualizar objeto existente
      * @return \App\Resource\User

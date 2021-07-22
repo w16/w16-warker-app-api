@@ -18,7 +18,7 @@ class PostoController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Pegar todos os registros de posto
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,7 +28,7 @@ class PostoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Criar um novo registro de posto
      *
      * @param  \App\Http\Requests\CreatePostoRequest $request
      * @return \Illuminate\Http\Response
@@ -39,7 +39,7 @@ class PostoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Pegar um registro de posto por id
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -50,7 +50,7 @@ class PostoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Atualizar um registro de posto por id
      *
      * @param  \App\Http\Requests\UpdatePostoRequest $request
      * @param  int  $id
@@ -62,7 +62,7 @@ class PostoController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remover um registro de posto por id
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

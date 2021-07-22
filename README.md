@@ -107,23 +107,23 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
 
 # Operações da API REST
 ## Tabela de operações
-| Método    | Endpoint          | Requer Auth | Descrição                             | Query                                        | Resposta | Codigo |
-| --------- | ----------------- | ----------- | ------------------------------------- | -------------------------------------------- | -------- | ------ |
-| GET/HEAD  | `/api/cidade`     | Sim         | Pegar todos os registros de cidade    | (vazio)                                      | cidade[] | 200    |
-| GET/HEAD  | `/api/cidade/:id` | Sim         | Pegar um registro de cidade por id    | (vazio)                                      | cidade   | 200    |
-| PUT/PATCH | `/api/cidade/:id` | Sim         | Alterar um registro de cidade por id  | (vazio)                                      | cidade   | 200    |
-| POST      | `/api/cidade`     | Sim         | Criar um novo registro de cidade      | nome_da_cidade, latitude, longitude          | cidade   | 201    |
-| DELETE    | `/api/cidade/:id` | Sim         | Remover um registro de cidade por id  | (vazio)                                      | cidade   | 204    |
-| GET/HEAD  | `/api/posto`      | Sim         | Pegar todos os registros de posto     | (vazio)                                      | posto[]  | 200    |
-| GET/HEAD  | `/api/posto/:id`  | Sim         | Pegar um registro de posto por id     | (vazio)                                      | posto    | 200    |
-| PUT/PATCH | `/api/posto/:id`  | Sim         | Alterar um registro de posto por id   | (vazio)                                      | posto    | 200    |
-| POST      | `/api/posto`      | Sim         | Criar um novo registro de posto       | cidade_id, reservatorio, latitude, longitude | posto    | 201    |
-| DELETE    | `/api/posto/:id`  | Sim         | Remover um registro de posto por id   | (vazio)                                      | (vazio)  | 204    |
-| GET/HEAD  | `/api/token`      | Sim         | Gerar um novo token de autorização    | (vazio)                                      | token    | 201    |
-| GET/HEAD  | `/api/user`       | Sim         | Pegar perfil do usuário autenticado   | (vazio)                                      | user     | 200    |
-| PUT       | `/api/user`       | Sim         | Alterar perfil do usuário autenticado | (vazio)                                      | user     | 200    |
-| POST      | `/api/login`      | Não         | Autenticar um usuário cadastrado      | (vazio)                                      | token    | 200    |
-| POST      | `/api/register`   | Não         | Criar um novo perfil de usuário       | (vazio)                                      | token    | 201    |
+| Método    | Endpoint          | Requer Auth | Descrição                               | Query                                        | Resposta | Codigo |
+| --------- | ----------------- | ----------- | --------------------------------------- | -------------------------------------------- | -------- | ------ |
+| GET/HEAD  | `/api/cidade`     | Sim         | Pegar todos os registros de cidade      | (vazio)                                      | cidade[] | 200    |
+| GET/HEAD  | `/api/cidade/:id` | Sim         | Pegar um registro de cidade por id      | (vazio)                                      | cidade   | 200    |
+| PUT/PATCH | `/api/cidade/:id` | Sim         | Atualizar um registro de cidade por id  | (vazio)                                      | cidade   | 200    |
+| POST      | `/api/cidade`     | Sim         | Criar um novo registro de cidade        | nome_da_cidade, latitude, longitude          | cidade   | 201    |
+| DELETE    | `/api/cidade/:id` | Sim         | Remover um registro de cidade por id    | (vazio)                                      | cidade   | 204    |
+| GET/HEAD  | `/api/posto`      | Sim         | Pegar todos os registros de posto       | (vazio)                                      | posto[]  | 200    |
+| GET/HEAD  | `/api/posto/:id`  | Sim         | Pegar um registro de posto por id       | (vazio)                                      | posto    | 200    |
+| PUT/PATCH | `/api/posto/:id`  | Sim         | Atualizar um registro de posto por id   | (vazio)                                      | posto    | 200    |
+| POST      | `/api/posto`      | Sim         | Criar um novo registro de posto         | cidade_id, reservatorio, latitude, longitude | posto    | 201    |
+| DELETE    | `/api/posto/:id`  | Sim         | Remover um registro de posto por id     | (vazio)                                      | (vazio)  | 204    |
+| GET/HEAD  | `/api/token`      | Sim         | Gerar um novo token de autorização      | (vazio)                                      | token    | 201    |
+| GET/HEAD  | `/api/user`       | Sim         | Pegar perfil do usuário autenticado     | (vazio)                                      | user     | 200    |
+| PUT       | `/api/user`       | Sim         | Atualizar perfil do usuário autenticado | (vazio)                                      | user     | 200    |
+| POST      | `/api/login`      | Não         | Autenticar um usuário cadastrado        | (vazio)                                      | token    | 200    |
+| POST      | `/api/register`   | Não         | Criar um novo perfil de usuário         | (vazio)                                      | token    | 201    |
 
 ## Objetos de resposta e outros
 ### Objeto user (Como em `/api/user`) 
