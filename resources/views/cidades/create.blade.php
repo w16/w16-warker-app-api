@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-center text-gray-800 leading-tight">
-            Criando registro de cidade
+            Novo registro de cidade
         </h2>
     </x-slot>
     <div>
