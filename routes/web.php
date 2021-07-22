@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\PostoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -11,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,3 +22,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::group(['auth:sanctum', 'verified'], function () {
+    Route::resource('cidades', CidadeController::class);
+    Route::resource('postos', PostoController::class);
+});
