@@ -24,7 +24,7 @@ class CreatePostoRequest extends FormRequest
     public function rules()
     {
         return [
-            'cidade_id' => 'required|numeric',
+            'cidade_id' => 'required|numeric|exists:cidades,id',
             'reservatorio' => 'required|numeric|between:0,100',
             'latitude' => 'required|numeric|between:-90,90',
             'longitude' => 'required|numeric|between:-180,180',
