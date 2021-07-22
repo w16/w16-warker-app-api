@@ -16,11 +16,6 @@ class Posto extends Model
         'longitude',
     ];
 
-    protected $hidden = [
-        'cidade_id',
-        'cidade_type'
-    ];
-
     public function cidade()
     {
         return $this->belongsTo(Cidade::class);
