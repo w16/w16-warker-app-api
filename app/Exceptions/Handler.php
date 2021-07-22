@@ -29,6 +29,10 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    private function makeErrorResponse($message, $code)
+    {
+        return response(['error' => $message], $code);
+    }
     /**
      * Register the exception handling callbacks for the application.
      *
@@ -42,13 +46,13 @@ class Handler extends ExceptionHandler
 
         $this->renderable(function (NotFoundHttpException $e, $request) {
             if ($request->is('api/*')) {
-                return response(['error' => $e->getMessage()], 404);
+                return $this->makeErrorResponse($e->getMessage(), 404);
             }
         });
 
         $this->renderable(function (UnauthorizedHttpException $e, $request) {
             if ($request->is('api/*')) {
-                return response(['error' => $e->getMessage()], 401);
+                return $this->makeErrorResponse($e->getMessage(), 401);
             }
         });
     }
