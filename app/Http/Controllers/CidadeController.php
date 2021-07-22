@@ -42,7 +42,7 @@ class CidadeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CreateCidadeRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateCidadeRequest $request)
@@ -55,30 +55,34 @@ class CidadeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Cidade $cidade
      * @return \Illuminate\Http\Response
      */
     public function show(Cidade $cidade)
     {
+        $cidade = $this->service->get($cidade->id);
+
         return view('cidades.show', compact('cidade'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Cidade $cidade
      * @return \Illuminate\Http\Response
      */
     public function edit(Cidade $cidade)
     {
+        $cidade = $this->service->get($cidade->id);
+
         return view('cidades.edit', compact('cidade'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateCidadeRequest $request
+     * @param  \App\Models\Cidade $cidade
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateCidadeRequest $request, Cidade $cidade)
@@ -91,7 +95,7 @@ class CidadeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Cidade $cidade
      * @return \Illuminate\Http\Response
      */
     public function destroy(Cidade $cidade)

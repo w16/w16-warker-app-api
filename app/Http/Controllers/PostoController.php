@@ -42,7 +42,7 @@ class PostoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CreatePostoRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreatePostoRequest $request)
@@ -55,7 +55,7 @@ class PostoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Posto $posto
      * @return \Illuminate\Http\Response
      */
     public function show(Posto $posto)
@@ -68,19 +68,21 @@ class PostoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Posto $posto
      * @return \Illuminate\Http\Response
      */
     public function edit(Posto $posto)
     {
+        $posto = $this->service->get($posto->id);
+        
         return view('postos.edit', compact('posto'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdatePostoRequest $request
+     * @param  \App\Models\Posto $posto
      * @return \Illuminate\Http\Response
      */
     public function update(UpdatePostoRequest $request, Posto $posto)
@@ -93,7 +95,7 @@ class PostoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Posto $posto
      * @return \Illuminate\Http\Response
      */
     public function destroy(Posto $posto)
