@@ -92,7 +92,7 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
     ```
 - **(Opcional)** Faça o clone do projeto em um local de sua preferência. Ao terminar o processo, mude para o local do projeto.
     ```
-    git clone <endereço_repo_git> && cd w16-warker-app-api
+    git clone <url_do_repositório> && cd <pasta_do_projeto>
     ```
 - Instale as dependências de projeto.
     ```
@@ -156,8 +156,8 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
 | POST      | `/api/posto/:id`  | Sim         | Criar um novo registro de posto         | cidade_id, reservatorio, latitude, longitude | posto    | 201    |
 | DELETE    | `/api/posto/:id`  | Sim         | Remover um registro de posto por id     | (vazio)                                      | (vazio)  | 204    |
 | GET/HEAD  | `/api/token`      | Sim         | Gerar um novo token de autorização      | (vazio)                                      | token    | 201    |
-| GET/HEAD  | `/api/user`       | Sim         | Pegar perfil do usuário autenticado     | (vazio)                                      | user     | 200    |
-| PUT       | `/api/user`       | Sim         | Atualizar perfil do usuário autenticado | name, email, password                        | user     | 200    |
+| GET/HEAD  | `/api/user`       | Sim         | Pegar perfil do usuário                 | (vazio)                                      | user     | 200    |
+| PUT       | `/api/user`       | Sim         | Atualizar perfil do usuário             | name, email, password                        | user     | 200    |
 | POST      | `/api/register`   | Não         | Criar um novo perfil de usuário         | name, email, password, password_confirmation | token    | 201    |
 | POST      | `/api/login`      | Não         | Autenticar um usuário cadastrado        | email, password                              | token    | 200    |
 
