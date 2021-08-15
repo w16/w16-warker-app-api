@@ -19,7 +19,9 @@ Para rodar o projeto se faz necessário haver um banco de dados **MySQL** denomi
 
 Clone o projeto;
 
- Abra o terminal e execute os comandos abaixo:
+Renomear o arquivo ".env.example" para ".env" e informar o usuário e senha de acesso ao banco de dados, alterando os parâmetros DB_USERNAME e DB_PASSWORD.
+
+ Abra o terminal, vá para a pasta do projeto e execute os comandos abaixo:
  Instale todas as dependências
  
 
@@ -32,6 +34,7 @@ Execute as migrations
 Crie chaves de criptografia necessárias para gerar tokens de acesso seguro do passport
 
     php artisan passport:install
+    php artisan key:generate
 
 Popular o banco de dados
 
