@@ -57,7 +57,7 @@ No momento em que o banco foi populado, o usuário abaixo foi inserido no banco,
 
  Após efetuar login através do endpoint **POST /api/login** , será retornado um token de acesso, utilize-o como Bearer Token no header das próximas requisições.
 
-Para inserir um novo usuário utilize o endpoint  **POST /api/user** para atualizar **PUT /api/user/id** e deletar **DELETE /api/user/id**
+Para inserir um novo usuário utilize o endpoint  **POST /api/user**, para atualizar um usuário utilize **PUT /api/user/id** e para deletar utilize **DELETE /api/user/id**
 
 Para efetuar logout utilize o endpoint **GET /api/logout**
 
