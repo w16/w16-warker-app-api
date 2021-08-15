@@ -6,88 +6,59 @@ Olá! Muito obrigado por participar da avalição técnica para integrar a equip
 
 Criamos esta avaliação para avaliar seu conhecimento em lógica de programação, capacidade de investigar e conhecer novas ferramentas, organização e qualidade de código e especialmente, sua criatividade.
 
-## Especificação
+## Projeto
 No mundo pós-apocaliptico de 2021, o combustível tem um valor inestimável. Gangues bárbaras lutam até a morte pelo controle desse valioso recurso e a W16 está desenvolvendo o aplicativo WARKER, que é a última esperança da humanidade em trazer um pouco de paz e ordem à esse mundo devastado.
 Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de gasolina das diversas cidades, sua localização e o nível dos seus reservatórios. Lembre-se de que não há mais lei e a sua vida depende do sucesso desse backend. Marcopoc não fica feliz quando o seu app falha devido a erros no backend e você não quer deixar o Marcopoc irritado...
 
-## Regras
-- Não há regras, não há lei, apenas a sobrevivência importa! 
+## Pré-requisito
+Para rodar o projeto se faz necessário haver um banco de dados **MySQL** denominado **warker**.
 
-## Recomendações
-- Faça bom uso dos recursos do framework (migrations, factories, estrutura MVC, rotas...)
-- D.R.Y. = "Don't Repeat Yourself"
-- Mantenha o código limpo e organizado
-- Utilize comentários pois alguém irá ler o seu código. Nosso último dev esqueceu um comentário importante. RIP :(
-- Utilize o README.md do seu projeto para explicar instalação, funcionamento, o processo que usou para o desenvolvimento ou implorar por misericórdia.
+    create database warker
 
-## Importante
-- Use Laravel 8
-- Use Laravel 8
-- Use Laravel 8
-- Já mencionei que a versão do laravel é a v8?
-- Lembre-se de usar os métodos GET,PUT,POST e DELETE.
+## Instalação
 
-## Pontos Extras
-Pode contar pontos extras
-- CRUD Web
-- Autenticação
-- Teste automatizado
-- Seeder e uso de fakers
+Clone o projeto;
 
-### Exemplo de tabelas:
+ Abra o terminal e execute os comandos abaixo:
+ Instale todas as dependências
+ 
 
-Cidades
-```
-|id |nome_da_cidade|latitude|longitude|created_at|updated_at|
-|int|string        |double  |double   |timestamp |timestamp |
-```
+     composer install
 
-Postos
-```
-|id |cidade_id|reservatorio|latitude|longitude|created_at|updated_at|
-|int|int(fk)  |int(1-100%) |double  |double   |timestamp |timestamp |
-```
+Execute as migrations
 
-### Endpoints esperados
-/api/cidade/id
-```
-{
-    id : id,
-    cidade : nome_da_cidade,
-    coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-    postos : {
-        id : id,
-        reservatorio : reservatorio,
-        coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-        updated_at : updated_at,
-        created_at : created_at
-    }
-}
-```
+    php artisan migrate
 
-/api/posto/id
-```
-{
-    id : id,
-    reservatorio : reservatorio,
-    coords : {
-        latitude : latitude,
-        longitude : longitude
-    },
-    updated_at : updated_at,
-    created_at : created_at
-}
-```
+Crie chaves de criptografia necessárias para gerar tokens de acesso seguro do passport
 
-## Entrega
-Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório todo o código do backend, juntamente com instruções, se necessário. O prazo para entrega será de 7 horas - ou melhor, 7 dias.
+    php artisan passport:install
 
-Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso time pelo instagram: @w16.softwarehouse
+Popular o banco de dados
 
-2 DEVS ENTRAM, 1 DEV SAI!
+    php artisan db:seed
+
+Execute o servidor web interno no Laravel
+
+    php artisan serve
+
+## Endpoints
+
+Utilizar o Postman ou outro de sua preferencia
+
+No momento em que o banco foi populado, o usuário abaixo foi inserido no banco use-o para efetuar login.
+
+| E-mail| Password |
+|--|--|
+| admin@w16.com| 123456|
+
+
+ Após efetuar login através do endpoint **POST /api/login** , será retornado um token de acesso, utilize-o como Bearer Token no header das próximas requisições.
+
+Para inserir um novo usuário utilize o endpoint  **POST /api/user** para atualizar **PUT /api/user/id** e deletar **DELETE /api/user/id**
+
+Para efetuar logout utilize o endpoint **GET /api/logout**
+
+Todos os demais endpoints para **cidades** e **postos** estão conforme orientado.
+
+## Agradecimento
+Obrigado equipe W16 pela oportunidade de participação deste desafio.
