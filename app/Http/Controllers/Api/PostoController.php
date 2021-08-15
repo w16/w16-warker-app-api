@@ -21,10 +21,6 @@ class PostoController extends Controller
      */
     public function index()
     {
-        /*$postos = DB::table('postos')
-        ->join('cidades', 'cidades.id', '=', 'postos.cidade_id')
-        ->select('postos.id', 'cidades.nome_da_cidade as cidade', 'postos.reservatorio', 'postos.latitude', 'postos.longitude', 'postos.created_at', 'postos.updated_at')->paginate();*/
-        //return new PostoResource(Posto::paginate(10));
         return new PostoResource(Posto::paginate());
     }
 
