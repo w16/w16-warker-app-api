@@ -48,7 +48,7 @@ Execute o servidor web interno no Laravel
 
 Utilizar o Postman ou outro de sua preferencia
 
-No momento em que o banco foi populado, o usuário abaixo foi inserido no banco use-o para efetuar login.
+No momento em que o banco foi populado, o usuário abaixo foi inserido no banco, use-o para efetuar login.
 
 | E-mail| Password |
 |--|--|
