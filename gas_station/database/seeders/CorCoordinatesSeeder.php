@@ -1,11 +1,10 @@
 <?php
- 
+
 namespace Database\Seeders;
 
-use App\Models\Coordinates;
 use Illuminate\Database\Seeder;
 
-class CoordinatesSeeder extends Seeder
+class CorCoordinatesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +13,6 @@ class CoordinatesSeeder extends Seeder
      */
     public function run()
     {
-        //make {2} factories of coordinates
-        Coordinates::factory(2)->create();
+        //
     }
 }

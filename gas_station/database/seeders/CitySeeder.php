@@ -1,12 +1,13 @@
 <?php
- 
+
 namespace Database\Seeders;
 
+use App\Models\City;
 use App\Models\Coordinates;
 use App\Models\GasStation;
 use Illuminate\Database\Seeder;
 
-class GasStationSeeder extends Seeder
+class CitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +16,11 @@ class GasStationSeeder extends Seeder
      */
     public function run()
     {
-        //make {6} factories of gas_station
-        // creating also a coordinate for the gas_station
-        GasStation::factory(6)
+        // make {3} cities with factory
+        // creating also a coordinate and a gas_station for the city
+        City::factory(6)
         ->has(Coordinates::factory())
+        ->has(GasStation::factory())
         ->create();
     }
 }

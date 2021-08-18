@@ -1,5 +1,5 @@
 <?php
- 
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,5 +17,12 @@ class Coordinates extends Model
     {
         // a coordinate can belong to a gas_station
         return $this->belongsTo(GasStation::class);
+    }
+
+    // indicating the relationship with a city
+    public function city()
+    {
+        // a coordinate can belong to a city
+        return $this->belongsTo(City::class);
     }
 }
