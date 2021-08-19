@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('city','CityController');
+Route::resource('gas','GasStationController');
+Route::resource('coordinates','CoordinatesController');

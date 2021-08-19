@@ -9,10 +9,12 @@ class City extends Model
 {
     use HasFactory;
 
-    // indicating the relationship with coordinates
+    /**
+     * @var mixed
+     */
     public function coordinates()
     {
-        // to every city it must hava a coordination too
+        // to every city it must have a coordination too
         $this->hasOne(Coordinates::class);
     }
 

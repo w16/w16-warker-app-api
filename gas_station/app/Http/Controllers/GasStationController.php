@@ -1,85 +1,64 @@
 <?php
- 
+
 namespace App\Http\Controllers;
 
 use App\Models\GasStation;
 use Illuminate\Http\Request;
+use App\Http\Resources\GasStation as GasResource;
 
 class GasStationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        // gets all gas stations and return as Gas Station Resource model
+        $gas = GasStation::all();
+        return GasResource::collection($gas);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    // store a new gas station
+    // request is link from the ui forms
     public function store(Request $request)
     {
-        //
+        // setting the ids of inputs to recognize the attributes
+        $gas = new GasStation();
+        $gas->tank = $request->input('tank');
+        $gas->coordinates_id = $request->input('coordinates');
+
+        // save the GasStation and return it to the response
+        if($gas->save())
+        {
+            return new GasResource($gas);
+        }
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\GasStation  $gasStation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(GasStation $gasStation)
+    // return a specific gas station, find by id
+    public function show($id)
     {
-        //
+        $gas = GasStation::query()->findOrFail($id);
+        return new GasResource($gas);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\GasStation  $gasStation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(GasStation $gasStation)
+    // return the gas station updated if found
+    public function update(Request $request, $id)
     {
-        //
+        // search gas station by id
+        $gas = GasStation::query()->findOrFail($id);
+        $gas->tank = $request->input('tank');
+        $gas->coordinates_id = $request->input('coordinates');
+
+        if($gas->save())
+        {
+            return new GasResource($gas);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\GasStation  $gasStation
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, GasStation $gasStation)
+    // detele Gas Station
+    public function destroy($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\GasStation  $gasStation
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(GasStation $gasStation)
-    {
-        //
+        $gas = GasStation::query()->findOrFail($id);
+        if ($gas->delete()){
+            return new GasResource($gas);
+        }
     }
 }
