@@ -16,6 +16,8 @@ class Coordinates extends JsonResource
             'id' => $this->id,
             'latitude'=> $this->latitude,
             'longitude'=> $this->longitude,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }

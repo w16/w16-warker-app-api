@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Resources;
+use \App\Models\Coordinates;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -15,7 +16,11 @@ class GasStation extends JsonResource
         return [
             'id' => $this->id,
             'tank'=> $this->tank,
-            'coordinates_id'=> $this->coordinates_id,
+            'coordinates_id'=> $this->whenPivotLoaded('coordinates','coordinates_id', function (){
+                return Coordinates::query()->findOrFail($this->coordinates_id);
+            }),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }
