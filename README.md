@@ -103,10 +103,13 @@ cd w16-warker-app-api/gas_station
 
 ```
 ~ composer install && npm install
-
-~ php artisan key:generate
 ```
 - Change the name of `.env.example` to `.env` and set data base variables
+```
+~ php artisan migrate
+
+~ php artisan db:seed
+``` 
 - The run server with:
 ```
 ~ php artisan serve
