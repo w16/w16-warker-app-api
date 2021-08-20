@@ -1,93 +1,115 @@
-# W16 Warker App - API
+# Laravel App - API
 
-## Desenvolvedor
+## Gas Stations
+API REST using Laravel to indicate the gas level on gas_stations on cities and locations.
 
-Olá! Muito obrigado por participar da avalição técnica para integrar a equipe de desenvolvimento da W16.
-
-Criamos esta avaliação para avaliar seu conhecimento em lógica de programação, capacidade de investigar e conhecer novas ferramentas, organização e qualidade de código e especialmente, sua criatividade.
-
-## Especificação
-No mundo pós-apocaliptico de 2021, o combustível tem um valor inestimável. Gangues bárbaras lutam até a morte pelo controle desse valioso recurso e a W16 está desenvolvendo o aplicativo WARKER, que é a última esperança da humanidade em trazer um pouco de paz e ordem à esse mundo devastado.
-Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de gasolina das diversas cidades, sua localização e o nível dos seus reservatórios. Lembre-se de que não há mais lei e a sua vida depende do sucesso desse backend. Marcopoc não fica feliz quando o seu app falha devido a erros no backend e você não quer deixar o Marcopoc irritado...
-
-## Regras
-- Não há regras, não há lei, apenas a sobrevivência importa! 
-
-## Recomendações
-- Faça bom uso dos recursos do framework (migrations, factories, estrutura MVC, rotas...)
-- D.R.Y. = "Don't Repeat Yourself"
-- Mantenha o código limpo e organizado
-- Utilize comentários pois alguém irá ler o seu código. Nosso último dev esqueceu um comentário importante. RIP :(
-- Utilize o README.md do seu projeto para explicar instalação, funcionamento, o processo que usou para o desenvolvimento ou implorar por misericórdia.
-
-## Importante
-- Use Laravel 8
-- Use Laravel 8
-- Use Laravel 8
-- Já mencionei que a versão do laravel é a v8?
-- Lembre-se de usar os métodos GET,PUT,POST e DELETE.
-
-## Pontos Extras
-Pode contar pontos extras
+## What the project has
+- Laravel 8
 - CRUD Web
-- Autenticação
-- Teste automatizado
-- Seeder e uso de fakers
+- Tests
+- Seeder & fakers
 
-### Exemplo de tabelas:
+### Tables:
 
-Cidades
+Cities
 ```
-|id |nome_da_cidade|latitude|longitude|created_at|updated_at|
-|int|string        |double  |double   |timestamp |timestamp |
-```
-
-Postos
-```
-|id |cidade_id|reservatorio|latitude|longitude|created_at|updated_at|
-|int|int(fk)  |int(1-100%) |double  |double   |timestamp |timestamp |
+|id |city   |coordinates_id|created_at|updated_at|
+|int|string |int(fk)       |timestamp |timestamp |
 ```
 
-### Endpoints esperados
-/api/cidade/id
+Gas Stations
+```
+|id |city_id  |tank       |coordinates_id|created_at|updated_at|
+|int|int(fk)  |int(0-30k) |int(fk)       |timestamp |timestamp |
+```
+
+Coordinates
+```
+|id |latitude|longitude|created_at|updated_at|
+|int|decimal |decimal  |timestamp |timestamp |
+```
+
+### Endpoints
+/api/city/id
 ```
 {
-    id : id,
-    cidade : nome_da_cidade,
-    coords : {
-            latitude : latitude,
-            longitude : longitude
+    "data": {
+        "id": 1,
+        "city": "Lake Leila",
+        "coordinates_id": {
+            "id": 1,
+            "latitude": "3.183211",
+            "longitude": "-65.566257",
+            "created_at": "2021-08-19T06:55:01.000000Z",
+            "updated_at": "2021-08-19T06:55:01.000000Z"
         },
-    postos : {
-        id : id,
-        reservatorio : reservatorio,
-        coords : {
-            latitude : latitude,
-            longitude : longitude
+        "gas_stations_id": {
+            "id": 1,
+            "tank": 13007,
+            "coordinates_id": 2,
+            "created_at": "2021-08-19T06:55:01.000000Z",
+            "updated_at": "2021-08-19T06:55:01.000000Z"
         },
-        updated_at : updated_at,
-        created_at : created_at
+        "created_at": "2021-08-19T06:55:02.000000Z",
+        "updated_at": "2021-08-19T06:55:02.000000Z"
     }
 }
 ```
 
-/api/posto/id
+/api/gas/id
 ```
 {
-    id : id,
-    reservatorio : reservatorio,
-    coords : {
-        latitude : latitude,
-        longitude : longitude
-    },
-    updated_at : updated_at,
-    created_at : created_at
+    "data": {
+        "id": 1,
+        "tank": 13007,
+        "coordinates_id": {
+            "id": 2,
+            "latitude": "-8.726594",
+            "longitude": "-44.658463",
+            "created_at": "2021-08-19T06:55:01.000000Z",
+            "updated_at": "2021-08-19T06:55:01.000000Z"
+        },
+        "created_at": "2021-08-19T06:55:01.000000Z",
+        "updated_at": "2021-08-19T06:55:01.000000Z"
+    }
+}
+```
+/api/coordinates/id
+```
+{
+    "data": {
+        "id": 1,
+        "latitude": "3.183211",
+        "longitude": "-65.566257",
+        "created_at": "2021-08-19T06:55:01.000000Z",
+        "updated_at": "2021-08-19T06:55:01.000000Z"
+    }
 }
 ```
 
-## Entrega
-Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório todo o código do backend, juntamente com instruções, se necessário. O prazo para entrega será de 7 horas - ou melhor, 7 dias.
+## Instalation
 
-Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso time pelo instagram: @w16.softwarehouse
+To test the api:
+- You need to clone this project on your pc. If you don't use linux, you should: So open your terminal and paste the command.
+```
+git clone https://github.com/trallerd/w16-warker-app-api.git
+```
+- Then go to the directory of it:
 
-2 DEVS ENTRAM, 1 DEV SAI!
+```
+cd w16-warker-app-api/gas_station
+```
+- Run the following commands to set Laravel :
+
+```
+~ composer install && npm install
+
+~ php artisan key:generate
+```
+- Change the name of `.env.example` to `.env` and set data base variables
+- The run server with:
+```
+~ php artisan serve
+```
+
+ - GG!
