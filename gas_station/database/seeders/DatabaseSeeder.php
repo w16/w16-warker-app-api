@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        /* 
+        /*
         As it doesn't make sense to generate coordinates and gas_stations without a city;
         here i populate the db creating only with the city seeder
         that also creates both;

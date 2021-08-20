@@ -18,6 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('city','CityController');
-Route::resource('gas','GasStationController');
-Route::resource('coordinates','CoordinatesController');
+//the routes will only return the api needs not routes web (create for example).
+Route::apiResource('city','CityController');
+Route::apiResource('gas','GasStationController');
+Route::apiResource('coordinates','CoordinatesController');
