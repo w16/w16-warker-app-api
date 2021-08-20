@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\GasStation;
 use Illuminate\Http\Request;
 use App\Http\Resources\GasStation as GasResource;
+use App\Models\Coordinates;
+use Database\Seeders\CoordinatesSeeder;
 
 class GasStationController extends Controller
 {
@@ -19,10 +21,12 @@ class GasStationController extends Controller
     // request is link from the ui forms
     public function store(Request $request)
     {
+        $coords = Coordinates::query()->find($request->input('coordinates'));
+
         // setting the ids of inputs to recognize the attributes
         $gas = new GasStation();
         $gas->tank = $request->input('tank');
-        $gas->coordinates_id = $request->input('coordinates');
+        $gas->coordinates_id = $coords;
 
         // save the GasStation and return it to the response
         if($gas->save())

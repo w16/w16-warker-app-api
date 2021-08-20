@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Http\Resources\City as CityResouce;
+use App\Models\Coordinates;
+use App\Models\GasStation;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -19,11 +21,14 @@ class CityController extends Controller
     // request is link from the ui forms
     public function store(Request $request)
     {
+        $coords = Coordinates::query()->find($request->input('coordinates'));
+        $gas = GasStation::query()->find($request->input('gas_station'));
+
         // setting the ids of inputs to recognize the attributes
         $city = new City();
         $city->city = $request->input('city');
-        $city->coordinates_id = $request->input('coordinates');
-        $city->gas_stations_id = $request->input('gas_station');
+        $city->coordinates_id = $coords;
+        $city->gas_stations_id = $gas;
 
         // save the city and return it to the response
         if($city->save())
@@ -43,11 +48,14 @@ class CityController extends Controller
     // return the city updated if found
     public function update(Request $request, $id)
     {
+        $coords = Coordinates::query()->find($request->input('coordinates'));
+        $gas = GasStation::query()->find($request->input('gas_station'));
+
         // search city by id
         $city = City::query()->findOrFail($id);
         $city->city = $request->input('city');
-        $city->coordinates_id = $request->input('coordinates');
-        $city->gas_stations_id = $request->input('gas_station');
+        $city->coordinates_id = $coords;
+        $city->gas_stations_id = $gas;
 
         if($city->save())
         {
