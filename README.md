@@ -1,93 +1,55 @@
-# W16 Warker App - API
 
-## Desenvolvedor
+## W16API
 
-Olá! Muito obrigado por participar da avalição técnica para integrar a equipe de desenvolvimento da W16.
+Esta API foi construida utilizando Laravel 8 + banco de dados MySQL/MariaDB.
 
-Criamos esta avaliação para avaliar seu conhecimento em lógica de programação, capacidade de investigar e conhecer novas ferramentas, organização e qualidade de código e especialmente, sua criatividade.
+    -As rotas da API estão contidas no diretório routes/api.php 
+    -Os controllers da API estão contidos em app/Http/Controllers/api
 
-## Especificação
-No mundo pós-apocaliptico de 2021, o combustível tem um valor inestimável. Gangues bárbaras lutam até a morte pelo controle desse valioso recurso e a W16 está desenvolvendo o aplicativo WARKER, que é a última esperança da humanidade em trazer um pouco de paz e ordem à esse mundo devastado.
-Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de gasolina das diversas cidades, sua localização e o nível dos seus reservatórios. Lembre-se de que não há mais lei e a sua vida depende do sucesso desse backend. Marcopoc não fica feliz quando o seu app falha devido a erros no backend e você não quer deixar o Marcopoc irritado...
+    -Os resources estão contidos em app/Http/Resources
 
-## Regras
-- Não há regras, não há lei, apenas a sobrevivência importa! 
+Esta API também contém um CRUD web
 
-## Recomendações
-- Faça bom uso dos recursos do framework (migrations, factories, estrutura MVC, rotas...)
-- D.R.Y. = "Don't Repeat Yourself"
-- Mantenha o código limpo e organizado
-- Utilize comentários pois alguém irá ler o seu código. Nosso último dev esqueceu um comentário importante. RIP :(
-- Utilize o README.md do seu projeto para explicar instalação, funcionamento, o processo que usou para o desenvolvimento ou implorar por misericórdia.
+    -Suas rotas estão contidas em routes/web.php
+    -Os controller estão contidos em app/Http/Controlles 
+        -WebCidadeController.php
+        -WebPostoController.php
 
-## Importante
-- Use Laravel 8
-- Use Laravel 8
-- Use Laravel 8
-- Já mencionei que a versão do laravel é a v8?
-- Lembre-se de usar os métodos GET,PUT,POST e DELETE.
+O formato dos end-points, são definidos dentro do resource, e é retornado pelo Eloquent:collection em uma fução
+acionada por uma rota específica.
 
-## Pontos Extras
-Pode contar pontos extras
-- CRUD Web
-- Autenticação
-- Teste automatizado
-- Seeder e uso de fakers
+Esta API contém factories e seeder, que podem ser utilizadas para gerar dados aleatórios para cada objeto.
 
-### Exemplo de tabelas:
+## Requisições
+    - composer
+    - Docker Desktop
+    - Subsistema Windows para Linux 2 (WSL2) esteja instalado e ativado
+    - Servidor virtual com banco de dados MySQL/MariaDB
 
-Cidades
-```
-|id |nome_da_cidade|latitude|longitude|created_at|updated_at|
-|int|string        |double  |double   |timestamp |timestamp |
-```
+## Instalação 
 
-Postos
-```
-|id |cidade_id|reservatorio|latitude|longitude|created_at|updated_at|
-|int|int(fk)  |int(1-100%) |double  |double   |timestamp |timestamp |
-```
+    Após ter todos os requistos necessários instalados e configurados em sua máquina
+    basta baixar os arquivos contios neste repositório remoto em um repositório local de sua preferencia
 
-### Endpoints esperados
-/api/cidade/id
-```
-{
-    id : id,
-    cidade : nome_da_cidade,
-    coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-    postos : {
-        id : id,
-        reservatorio : reservatorio,
-        coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-        updated_at : updated_at,
-        created_at : created_at
-    }
-}
-```
+    Após o download do arquivo abra o terminal da sua máquina no diretório onde os arquivos estão contidos
+    e execute o comando:
+        - "composer install"
 
-/api/posto/id
-```
-{
-    id : id,
-    reservatorio : reservatorio,
-    coords : {
-        latitude : latitude,
-        longitude : longitude
-    },
-    updated_at : updated_at,
-    created_at : created_at
-}
-```
+    Após a conclusão da instalação das dependencias
 
-## Entrega
-Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório todo o código do backend, juntamente com instruções, se necessário. O prazo para entrega será de 7 horas - ou melhor, 7 dias.
+        - renomeie o arquivo ".env.exemple" para ".env"
+        - configure os dados referente ao banco em que a api irá se conectar
 
-Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso time pelo instagram: @w16.softwarehouse
+        - no terminal novamente, execute o comando "php artisan migrate"
+            este comando irá gerar as tabelas necessárias para o funcionamento da api, em seu banco de dados
+        
+    após isso, basta executar o comando "php artisan serve" e o servidor do laravel sera startado e você poderá abri o sistema
+    em seu localhost utilizando a porta 8000. Ex: localhost:8000 ou 127.0.0.1:8000.
 
-2 DEVS ENTRAM, 1 DEV SAI!
+    Você pode cadastrar as cidades e postos relacionados pelo browser.
+
+    Casa queira gerar os dados aleatórios de forma automatizada, basta entrar no seu terminal novamente e executar o comando
+    "php artisan db:seed".
+        -Este comando irá gerar 4 cidades aleatórias, e 3 postos para cada cidade.
+
+        Estas especificações estão contidas em "database/seeders/CidadeTableSeeder.php";
