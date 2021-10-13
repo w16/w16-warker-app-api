@@ -17,7 +17,7 @@ class CreatePostosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('cidade_id');
 
-            $table->foreign('cidade_id')->references('id')->on('cidades');
+            $table->foreign('cidade_id')->references('id')->on('cidades')->onDelete('cascade');
 
             $table->integer('reservatorio');
             $table->double('latitude');

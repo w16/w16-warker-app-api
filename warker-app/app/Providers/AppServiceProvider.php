@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Resources\CidadeResource;
+use App\Http\Resources\PostoResource;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        CidadeResource::withoutWrapping();
+        PostoResource::withoutWrapping();
     }
 }

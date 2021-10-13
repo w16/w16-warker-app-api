@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\CidadesController;
-use App\Http\Controllers\PostosController;
-use App\Models\Cidades;
+use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\PostoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('cidade', CidadesController::class);
+// Rota que aponta para o Controller, Resource irá usar os metodos GET, POST, DELETE e PUT
+Route::resource('cidade', CidadeController::class);
 
-Route::resource('posto', PostosController::class);
+Route::resource('posto', PostoController::class);

@@ -13,6 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // PostoSeeder já cria as cidades em que ele pertence, portanto CidadeSeeder está comentado
+        // Caso queira criar Cidades sem os Postos, descomente e irá criar 10 cidades sem postos
+
+        // $this->call(CidadeSeeder::class);
+        $this->call(PostoSeeder::class);
     }
 }
