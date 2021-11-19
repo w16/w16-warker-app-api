@@ -36,6 +36,8 @@ class PostoController extends Controller
     public function store(Request $request)
     {
         $posto = new Posto;
+        $posto->cidade_id = $request->input('cidade_id');
+
         $posto->reservatorio = $request->input('reservatorio');
         $posto->latitude = $request->input('latitude');
         $posto->longitude = $request->input('longitude');
@@ -61,6 +63,7 @@ class PostoController extends Controller
     public function update(Request $request, $id)
     {
         $posto = Posto::findOrFail( $request->id );
+        $posto->cidade_id = $request->input('cidade_id');
         $posto->reservatorio = $request->input('reservatorio');
         $posto->latitude = $request->input('latitude');
         $posto->longitude = $request->input('longitude');
