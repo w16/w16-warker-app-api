@@ -19,7 +19,7 @@ class CreatePostosTable extends Migration
             $table->foreign('cidade_id')->references('id')->on('cidades');
             $table->integer("reservatorio");
             $table->double("latitude");
-            $table->double("logintude");
+            $table->double("longitude");
             $table->timestamps();
         });
     }

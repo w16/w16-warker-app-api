@@ -19,7 +19,7 @@ class CreateCidadesTable extends Migration
 
             $table->string("nome");
             $table->double("latitude");
-            $table->double("logintude");
+            $table->double("longitude");
 
             $table->timestamps();
         });

@@ -19,7 +19,7 @@ class CidadeSeeder extends Seeder
             DB::table('cidades')->insert([
                 'nome' => Str::random(10),
                 'latitude' => rand(0,100),
-                'logintude' => rand(0,100)
+                'longitude' => rand(0,100)
 
             ]);
         }

@@ -9,5 +9,5 @@ class Posto extends Model
 {
     use HasFactory;
     protected $table = 'postos';
-    protected $fillable= ['cidade_id','reservatorio','latitude','logintude'];
+    protected $fillable= ['cidade_id','reservatorio','latitude','longitude'];
 }
