@@ -15,7 +15,7 @@ class CidadeSeeder extends Seeder
      */
     public function run()
     {
-            for($i=0; $i<100; $i++){
+            for($i=0; $i<10; $i++){
             DB::table('cidades')->insert([
                 'nome' => Str::random(10),
                 'latitude' => rand(0,100),

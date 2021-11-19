@@ -15,7 +15,7 @@ class PostoSeeder extends Seeder
      */
     public function run()
     {
-        for($i=0; $i<100; $i++){
+        for($i=0; $i<20; $i++){
             DB::table('postos')->insert([
                 'cidade_id' => rand(1,10),
                 'reservatorio' => rand(0,100),
