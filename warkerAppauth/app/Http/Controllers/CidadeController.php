@@ -39,7 +39,10 @@ class CidadeController extends Controller
         return response()->json($data);
     }
 
-   
+    public function list(){
+        $cidades= Cidade::get();
+        return CidadeResource::collection($cidades);
+    }
 
     /**
      * Store a newly created resource in storage.

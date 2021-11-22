@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('posto/{id}', [PostoController::class, 'index']);
 
     Route::post('posto/store', [PostoController::class, 'store']);
+    Route::get('posto/', [PostoController::class, 'list']);
 
     Route::put('posto/update/{id}', [PostoController::class, 'update']);
 
@@ -31,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::get('cidade/{id}', [CidadeController::class, 'index']);
+    Route::get('cidade', [CidadeController::class, 'list']);
 
     Route::post('cidade/store', [CidadeController::class, 'store']);
 

@@ -25,7 +25,10 @@ class PostoController extends Controller
         return response()->json($data);
     }
 
-   
+    public function list(){
+        $postos= Posto::get();
+        return PostoResource::collection($postos);
+    }
 
     /**
      * Store a newly created resource in storage.

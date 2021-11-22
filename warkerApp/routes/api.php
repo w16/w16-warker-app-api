@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('posto/{id}', [PostoController::class, 'index']);
+Route::get('posto/', [PostoController::class, 'list']);
 
 Route::post('posto/store', [PostoController::class, 'store']);
 
@@ -28,6 +29,7 @@ Route::delete('posto/delete/{id}', [PostoController::class,'destroy']);
 
 
 Route::get('cidade/{id}', [CidadeController::class, 'index']);
+Route::get('cidade', [CidadeController::class, 'list']);
 
 Route::post('cidade/store', [CidadeController::class, 'store']);
 

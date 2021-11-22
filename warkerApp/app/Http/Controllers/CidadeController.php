@@ -38,7 +38,10 @@ class CidadeController extends Controller
         $data= $main;
         return response()->json($data);
     }
-
+    public function list(){
+        $cidades= Cidade::get();
+        return CidadeResource::collection($cidades);
+    }
    
 
     /**
