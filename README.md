@@ -11,8 +11,9 @@
 </ul>
 # Teste API Pública
 
-* 1- Abra no terminal o reporsitorio warkerApp
-* 2- Altere os atributos no arquivo .env para os valores da sua máquina   
+* 1- Abra no terminal o reporsitorio warkerApp e execute o comando
+  - composer install
+* 2- Renomei o arquivo .env.example para .env e altere os atributos no arquivo .env para os valores da sua máquina   
     DB_DATABASE=warkerapp
     DB_USERNAME=root
     DB_PASSWORD=
@@ -42,8 +43,9 @@
     - delete - api/cidade/delete/{id} - Exclui uma cidade no banco de dados
 
 # Teste API com autenticação JWT
-* 1- Abra no terminal o reporsitorio warkerAppauth
-* 2- Altere os atributos no arquivo .env para os valores da sua máquina   
+* 1- Abra no terminal o reporsitorio warkerApp e execute o comando
+  - composer install
+* 2- Renomei o arquivo .env.example para .env e altere os atributos no arquivo .env para os valores da sua máquina    
     DB_DATABASE=warkerappauth
     DB_USERNAME=root
     DB_PASSWORD=
