@@ -24,54 +24,57 @@
     - php artisan serve
 * 6- Rotas disponíveis para teste no postman
      method - rota - explicação 
-    ** get  - api/posto/{id}  - Retorna os dados do posto especificado, substituir id por um número. Por padrão ja terá 20 postos cadastrados. 
+    - get  - api/posto/{id}  - Retorna os dados do posto especificado, substituir id por um número. Por padrão ja terá 20 postos cadastrados. 
 
-    ** post - api/posto/store - Cadastrar um posto no banco de dados, recebe como parametro um json com os seguintes campos - cidades_id, reservatorio, latitude, longitude
+    - post - api/posto/store - Cadastrar um posto no banco de dados, recebe como parametro um json com os seguintes campos - cidades_id, reservatorio, latitude, longitude
 
-    ** put - api/posto/update/{id} - Atualizar um posto no banco de dados, recebe como parametro um json com os seguintes campos - id , cidades_id, reservatorio, latitude, longitude
+   - put - api/posto/update/{id} - Atualizar um posto no banco de dados, recebe como parametro um json com os seguintes campos - id , cidades_id, reservatorio, latitude, longitude
 
-    ** delete - api/posto/delete/{id} - Exclui um posto no banco de dados
+    - delete - api/posto/delete/{id} - Exclui um posto no banco de dados
 
 
-    ** get - api/cidade/{id} - Retorna os dados da cidade especificada e os postos que tem naquela cidade, substituir id por um número. Por padrão ja terá 10 cidades cadastrados.
+    - get - api/cidade/{id} - Retorna os dados da cidade especificada e os postos que tem naquela cidade, substituir id por um número. Por padrão ja terá 10 cidades cadastrados.
 
-    ** post - api/cidade/store - Cadastrar uma cidade no banco de dados, recebe como parametro um json com os seguintes campos - nome, latitude, longitude
+    - post - api/cidade/store - Cadastrar uma cidade no banco de dados, recebe como parametro um json com os seguintes campos - nome, latitude, longitude
 
-    ** put - api/cidade/update/{id} - Atualizar uma cidade no banco de dados, recebe como parametro um json com os seguintes campos - id , nome, latitude, longitude
+    - put - api/cidade/update/{id} - Atualizar uma cidade no banco de dados, recebe como parametro um json com os seguintes campos - id , nome, latitude, longitude
 
-    ** delete - api/cidade/delete/{id} - Exclui uma cidade no banco de dados
+    - delete - api/cidade/delete/{id} - Exclui uma cidade no banco de dados
 
 # Teste API com autenticação JWT
-1- Abra no terminal o reporsitorio warkerAppauth
-2- Altere os atributos no arquivo .env para os valores da sua máquina   
+* 1- Abra no terminal o reporsitorio warkerAppauth
+* 2- Altere os atributos no arquivo .env para os valores da sua máquina   
     DB_DATABASE=warkerappauth
     DB_USERNAME=root
     DB_PASSWORD=
-2- Execute os comandos:
+* 3- Execute os comandos:
     - php artisan migrate
     - php artisan db:seed
-3- Abro seu gerenciador de banco de dados e no banco de dados warkeApp execute o script sql para adição do gatilho. Ele ta localizado na pasta database/sqls
-4- Execute o comando no terminal
+* 4- Abro seu gerenciador de banco de dados e no banco de dados warkeApp execute o script sql para adição do gatilho. Ele ta localizado na pasta database/sqls
+* 5- Execute o comando no terminal
     - php artisan serve
-5- Rotas disponíveis para teste no postman
+* 6- Rotas disponíveis para teste no postman
     method - rota - explicação 
-    post - api/register -  Para cadastrar um novo usuário para acessar a API , recebe um json com os seguintes campos - name, email, password
-    post - api/login - Para realizar o login e assim ter acesso a API, recebe um json com os seguintes campos - email, password
+    - post - api/register -  Para cadastrar um novo usuário para acessar a API , recebe um json com os seguintes campos - name, email, password. Crie um usuario primeiro e depois realize o login. 
+    - post - api/login - Para realizar o login e assim ter acesso a API, recebe um json com os seguintes campos - email, password
     As rotas abaixo precisa está logado para serem acessadas: 
-        post - api/logout - Encerrar a sessão 
-        get  - api/posto/{id}  - Retorna os dados do posto especificado, substituir id por um número. Por padrão ja terá 20 postos cadastrados. 
+    - post - api/logout - Encerrar a sessão 
+    - get  - api/posto/{id}  - Retorna os dados do posto especificado, substituir id por um número. Por padrão ja terá 20 postos cadastrados. 
 
-        post - api/posto/store - Cadastrar um posto no banco de dados, recebe como parametro um json com os seguintes campos - cidades_id, reservatorio, latitude, longitude
+    - post - api/posto/store - Cadastrar um posto no banco de dados, recebe como parametro um json com os seguintes campos - cidades_id, reservatorio, latitude, longitude
 
-        put - api/posto/update/{id} - Atualizar um posto no banco de dados, recebe como parametro um json com os seguintes campos - id , cidades_id, reservatorio, latitude, longitude
+    - put - api/posto/update/{id} - Atualizar um posto no banco de dados, recebe como parametro um json com os seguintes campos - id , cidades_id, reservatorio, latitude, longitude
 
-        delete - api/posto/delete/{id} - Exclui um posto no banco de dados
+    - delete - api/posto/delete/{id} - Exclui um posto no banco de dados
 
 
-        get - api/cidade/{id} - Retorna os dados da cidade especificada e os postos que tem naquela cidade, substituir id por um número. Por padrão ja terá 10 cidades cadastrados.
+    - get - api/cidade/{id} - Retorna os dados da cidade especificada e os postos que tem naquela cidade, substituir id por um número. Por padrão ja terá 10 cidades cadastrados.
 
-        post - api/cidade/store - Cadastrar uma cidade no banco de dados, recebe como parametro um json com os seguintes campos - nome, latitude, longitude
+    - post - api/cidade/store - Cadastrar uma cidade no banco de dados, recebe como parametro um json com os seguintes campos - nome, latitude, longitude
 
-        put - api/cidade/update/{id} - Atualizar uma cidade no banco de dados, recebe como parametro um json com os seguintes campos - id , nome, latitude, longitude
+    - put - api/cidade/update/{id} - Atualizar uma cidade no banco de dados, recebe como parametro um json com os seguintes campos - id , nome, latitude, longitude
 
-        delete - api/cidade/delete/{id} - Exclui uma cidade no banco de dados
+    - delete - api/cidade/delete/{id} - Exclui uma cidade no banco de dados
+# Teste Front End
+* 1- Abra o terminal na pasta warkerfront
+* 2 - Execute o comando npm start
