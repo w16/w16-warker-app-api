@@ -11,13 +11,14 @@
 </ul>
 # Teste API Pública
 
-* 1- Abra no terminal o reporsitorio warkerApp e execute o comando
+* 1- Abra no terminal o reporsitorio warkerApp e execute os comandos
   - composer install
+  - php artisan key:generate
 * 2- Renomei o arquivo .env.example para .env e altere os atributos no arquivo .env para os valores da sua máquina   
     DB_DATABASE=warkerapp
     DB_USERNAME=root
     DB_PASSWORD=
-* 3- Execute os comandos:
+* 3- Start seu servidor de banco de dados e execute os comandos no terminal aberto anteriormente:
     - php artisan migrate
     - php artisan db:seed
 * 4- Abro seu gerenciador de banco de dados e no banco de dados warkeApp execute o script sql para adição do gatilho. Ele ta localizado na pasta database/sqls
@@ -45,11 +46,12 @@
 # Teste API com autenticação JWT
 * 1- Abra no terminal o reporsitorio warkerApp e execute o comando
   - composer install
+  - php artisan key:generate
 * 2- Renomei o arquivo .env.example para .env e altere os atributos no arquivo .env para os valores da sua máquina    
     DB_DATABASE=warkerappauth
     DB_USERNAME=root
     DB_PASSWORD=
-* 3- Execute os comandos:
+* 3- Start seu servidor de banco de dados e execute os comandos no terminal aberto anteriormente:
     - php artisan migrate
     - php artisan db:seed
 * 4- Abro seu gerenciador de banco de dados e no banco de dados warkeApp execute o script sql para adição do gatilho. Ele ta localizado na pasta database/sqls
