@@ -81,4 +81,6 @@
     - delete - api/cidade/delete/{id} - Exclui uma cidade no banco de dados
 # Teste Front End
 * 1- Abra o terminal na pasta warkerfront
-* 2 - Execute o comando npm start
+* 2 - Execute os comandos:
+ - npm install
+ -npm start
