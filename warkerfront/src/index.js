@@ -1,14 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { render } from "react-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import App from "./App";
+import RegisterCidade from "./components/RegisterCidade";
+import ListCidade from "./components/ListCidade";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const rootElement = document.getElementById("root");
+render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/cidade/add" element={<RegisterCidade />} />
+      <Route path="/cidade" element={<ListCidade />} />
+    </Routes>
+  </BrowserRouter>,
+  rootElement
 );
-
-reportWebVitals();
