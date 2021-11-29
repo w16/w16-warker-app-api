@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './App.css';
 import ListCidade from './components/ListCidade';
 import RegisterCidade from './components/RegisterCidade'; 
+import Login from './components/Login';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
 
       <RegisterCidade></RegisterCidade>
 
-   
+      <Login></Login>
+
     </div>
   );
 }
