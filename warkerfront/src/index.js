@@ -8,7 +8,7 @@ import App from "./App";
 import RegisterCidade from "./components/RegisterCidade";
 import ListCidade from "./components/ListCidade";
 import axios from "axios";
-
+axios.defaults.headers.common['Authorization']= 'Bearer'+localStorage.getItem('token');
 const rootElement = document.getElementById("root");
 render(
   <BrowserRouter>

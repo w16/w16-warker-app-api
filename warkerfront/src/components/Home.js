@@ -4,15 +4,13 @@ import React, {Component} from 'react';
 export default class Home extends Component{
     
     componentDidMount(){
-        const config ={ 
-            headers:{
-                Authorization:'Bearer '+localStorage.getItem('token')
-            }
-        };
+      
 
         axios.get('http://127.0.0.1:8000/user', config).then(
             res =>{
-                console.log(res);
+                this.setState({
+                    user: res.data
+                });
             },
             err=>{
                 console.log(err);
@@ -20,6 +18,11 @@ export default class Home extends Component{
         )
     }
     render(){
+        if(this.state.user){
+            return(
+                <h2>Ola senhor {this.state.user.name}</h2>
+            )
+        }
         return(
            <div>Logado</div>
 
