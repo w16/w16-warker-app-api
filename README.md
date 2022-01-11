@@ -26,11 +26,13 @@
 <hr>
 <h1>Configuração .env</h1>
 
-<code>
-  DB_CONNECTION=mysql<br>
-  DB_HOST=127.0.0.1<br>
-  DB_PORT=3306<br>
-  DB_DATABASE=w16<br>
-  DB_USERNAME=usuariobanco<br>
-  DB_PASSWORD=senhabanco<br>
-</code>
+DB_CONNECTION=mysql<br>
+DB_HOST=127.0.0.1<br>
+DB_PORT=3306<br>
+DB_DATABASE=w16<br>
+DB_USERNAME=usuariobanco<br>
+DB_PASSWORD=senhabanco<br>
+
+<hr>
+<h1>Insominia (Caso você use insominia)</h1>
+<h3>Dentro da raiz do projeto tem um arquivo endpoints-insomi.json baixe ele e exporta para o insominia e seja feliz.</h3>
