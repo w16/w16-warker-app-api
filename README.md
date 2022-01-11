@@ -43,3 +43,15 @@ DB_PASSWORD=senhabanco //Senha do seu banco<br>
 
 <h1>Insominia (Caso você use Insomnia)</h1>
 <h3>Dentro da raiz do projeto tem um arquivo <b>endpoints-insomi.json</b> baixe ele e exporta para o insomnia nesse arquivo contem todas rotas da API.</h3>
+
+<h1>Cadastrar um novo usuario</h1>
+
+<ul>
+  <li>
+    '/api/register' -> { email: "", password: "", name: ""}
+  </li>
+
+   <li>
+    '/api/login' -> { email: "", password: ""}
+  </li>
+<ul>
