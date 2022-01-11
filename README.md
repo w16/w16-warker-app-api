@@ -1,5 +1,5 @@
 <h1>Configuração Inicial</h1>
-
+<hr>
 <h3>Segue os comandos abaixo. (Ambiente Linux)</h3>
 <ul>
   <li>
