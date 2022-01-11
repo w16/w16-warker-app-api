@@ -27,10 +27,10 @@
 <h1>Configuração .env</h1>
 
 <code>
-  DB_CONNECTION=mysql
-  DB_HOST=127.0.0.1
-  DB_PORT=3306
-  DB_DATABASE=w16
-  DB_USERNAME=usuariobanco
-  DB_PASSWORD=senhabanco
+  DB_CONNECTION=mysql<br>
+  DB_HOST=127.0.0.1<br>
+  DB_PORT=3306<br>
+  DB_DATABASE=w16<br>
+  DB_USERNAME=usuariobanco<br>
+  DB_PASSWORD=senhabanco<br>
 </code>
