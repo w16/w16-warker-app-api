@@ -11,6 +11,11 @@ DB_PASSWORD=senhabanco //Senha do seu banco<br>
 <ul>
   <li>
       <code>
+      git clone https://github.com/techwebsolucao/w16-warker-app-api.git
+      </code>
+  </li>
+  <li>
+      <code>
       cd w16
       </code>
   </li>
