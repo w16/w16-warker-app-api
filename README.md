@@ -1,7 +1,5 @@
 <h1>Configuração Inicial</h1>
 
-<h1>Configuração .env</h1>
-
 DB_CONNECTION=mysql<br>
 DB_HOST=127.0.0.1<br>
 DB_PORT=3306<br>
