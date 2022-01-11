@@ -35,4 +35,4 @@ DB_PASSWORD=senhabanco<br>
 
 <hr>
 <h1>Insominia (Caso você use insominia)</h1>
-<h5>Dentro da raiz do projeto tem um arquivo <b>endpoints-insomi.json</b> baixe ele e exporta para o insominia e seja feliz.</h5>
+<h3>Dentro da raiz do projeto tem um arquivo <b>endpoints-insomi.json</b> baixe ele e exporta para o insominia nesse arquivo contem todas rotas da API.</h3>
