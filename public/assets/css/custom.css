@@ -1,0 +1,37 @@
+#login {
+    height: 100%;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.sidenav .collapsible .menu-drop {
+	line-height: 48px;
+	height: 48px;
+	color: #fff;
+}
+
+.sidenav .collapsible .menu-drop .icon-chevron-menu-drop {
+	margin-top: 10px;
+	color: #fff;
+}
+
+.sidenav .no-padding .collapsible .collapsible-body a {
+	color: #fff;
+}
+
+.sidenav .no-padding .collapsible .collapsible-body a .material-icons {
+	color: #fff;
+}
+
+.sidenav .title-menu a {
+	color: #fff;
+}
+
+.sidenav .title-menu a .material-icons {
+	color: #fff;
+}
