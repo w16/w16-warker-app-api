@@ -13,9 +13,7 @@ class CidadesController extends Controller
     	$cidade = Cidade::find($id);
 
     	if(is_null($cidade)) {
-    		return response()->json([
-    			'message' => 'Nenhum registro encontrado.'
-    		]);
+    		return response()->json([]);
     	}
 
     	$cidade->postos = Posto::where('cidade_id', '=', $cidade->id)->get();

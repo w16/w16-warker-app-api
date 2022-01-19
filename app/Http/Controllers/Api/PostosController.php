@@ -12,9 +12,7 @@ class PostosController extends Controller
     	$posto = Posto::find($id);
 
     	if(is_null($posto)) {
-    		return response()->json([
-    			'message' => 'Nenhum registro encontrado.'
-    		]);
+    		return response()->json([]);
     	}
 
     	return response()->json($posto);
