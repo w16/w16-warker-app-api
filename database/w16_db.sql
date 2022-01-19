@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Jan-2022 às 16:52
+-- Tempo de geração: 19-Jan-2022 às 17:31
 -- Versão do servidor: 10.4.14-MariaDB
 -- versão do PHP: 7.4.9
 
@@ -121,7 +121,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin User', 'admin@teste.com', NULL, '$2y$10$VUlmmGy2fUmjwyTkQ0ico.Lv8pvmJHkFjSOXRq97PpbpgmXTWSHqC', NULL, '2022-01-19 16:45:52', '2022-01-19 17:42:50'),
+(1, 'Admin', 'admin@teste.com', NULL, '$2y$10$YMYSc7/c9DvqBI7uXSeZ9ehatuW3mkw5K.2MYt70IHUS8S2iknZK.', NULL, '2022-01-19 16:45:52', '2022-01-19 19:31:36'),
 (2, 'Usuário', 'teste@teste.com', NULL, '$2y$10$MmfT3rNbgMdNCt4FsLzL9uU7kX.n8XSRa2kFpMgq/PWU/NDI/pvxa', NULL, '2022-01-19 17:57:52', '2022-01-19 18:48:46'),
 (3, 'Ciclano', 'ciclano@teste.com', NULL, '$2y$10$bfnwSkqs1IoCYG0N0d582eUiioNJevsMori1iLeAMDWBG4CfzSc2a', NULL, '2022-01-19 18:51:16', '2022-01-19 18:51:16');
 
