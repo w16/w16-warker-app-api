@@ -93,9 +93,7 @@ Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso ti
 2 DEVS ENTRAM, 1 DEV SAI!
 
 
-
-
-////////////////    Instruções    ////////////////
+## Instruções
 
 Após clonar ou baixar o projeto abra o prompt de comnando ou terminal, navegue até a pasta do projeto e execute o comando:
 composer install
