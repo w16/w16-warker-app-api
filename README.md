@@ -38,10 +38,11 @@ php artisan db:seed
 ```
 
 ## Endpoints
-Para conseguir utilizar o <b>POST,GET,POST,PUT e DELETE</b> você pode está utilizando o Postman (programa gratuito). O Endpoints é formado de rotas publicas e rotas protegidas, as rotas públicas você consegue acessar sem o Bearer Token, as rotas protegidas você precisa deste token que é obtido através do login.
-
+Para conseguir utilizar o <b>POST, GET, POST, PUT e DELETE</b> você pode está utilizando o Postman (programa gratuito). O Endpoints é formado de rotas publicas e rotas protegidas, as rotas públicas você consegue acessar sem o Bearer Token, as rotas protegidas você precisa deste token que é obtido através do login.
+<br>
 - Rotas públicas:
-<b>Para se cadastrar</b>
+
+<b>Para se cadastrar</b><br>
 <b>POST</b> /api/register
 ```
 {
@@ -52,7 +53,7 @@ Para conseguir utilizar o <b>POST,GET,POST,PUT e DELETE</b> você pode está uti
 }
 ```
 
-<b>Para se logar</b>
+<b>Para se logar</b><br>
 <b>POST</b> /api/login
 ```
 {
@@ -62,17 +63,18 @@ Para conseguir utilizar o <b>POST,GET,POST,PUT e DELETE</b> você pode está uti
 Será gerado um Token (Bearer Token) que será usado no HEADER para acessar as rotas protegidas.
 ```
 
-- Rotas protegida (Todas é necessário informar o Token no HEADER):
-<b>Para se deslogar</b>
-<b>POST</b> /api/login
+- Rotas protegida (Todas é necessário informar o Token no <b>HEADER</b>):
 
-<b>Para visualizar todas as cidades cadastradas</b>
-<b>GET</b> /api/cidade
+<b>Para se deslogar</b><br>
+<b>POST</b> /api/login<br>
 
-<b>Para visualizar uma cidade específica</b>
-<b>GET</b> /api/cidade/{id}
-
-<b>Para armazenar uma cidade</b>
+<b>Para visualizar todas as cidades cadastradas</b><br>
+<b>GET</b> /api/cidade<br>
+<br>
+<b>Para visualizar uma cidade específica</b><br>
+<b>GET</b> /api/cidade/{id}<br>
+<br>
+<b>Para armazenar uma cidade</b><br>
 <b>POST</b> /api/cidade/
 ```
 {
@@ -82,7 +84,7 @@ Será gerado um Token (Bearer Token) que será usado no HEADER para acessar as r
 }
 ```
 
-<b>Para atualizar uma cidade específica</b>
+<b>Para atualizar uma cidade específica</b><br>
 <b>PUT</b> /api/cidade/{id}
 ```
 {
@@ -92,16 +94,16 @@ Será gerado um Token (Bearer Token) que será usado no HEADER para acessar as r
 }
 ```
 
-<b>Para remover uma cidade específica</b>
-<b>DELETE</b> /api/cidade/{id}
-
-<b>Para visualizar todos os postos cadastrados</b>
-<b>GET</b> /api/posto
-
-<b>Para visualizar um posto específico</b>
-<b>GET</b> /api/posto/{id}
-
-<b>Para armazenar um posto</b>
+<b>Para remover uma cidade específica</b><br>
+<b>DELETE</b> /api/cidade/{id}<br>
+<br>
+<b>Para visualizar todos os postos cadastrados</b><br>
+<b>GET</b> /api/posto<br>
+<br>
+<b>Para visualizar um posto específico</b><br>
+<b>GET</b> /api/posto/{id}<br>
+<br>
+<b>Para armazenar um posto</b><br>
 <b>POST</b> /api/posto/
 ```
 {
@@ -112,7 +114,7 @@ Será gerado um Token (Bearer Token) que será usado no HEADER para acessar as r
 }
 ```
 
-<b>Para atualizar um posto específico</b>
+<b>Para atualizar um posto específico</b><br>
 <b>PUT</b> /api/posto/{id}
 ```
 {
@@ -123,8 +125,8 @@ Será gerado um Token (Bearer Token) que será usado no HEADER para acessar as r
 }
 ```
 
-<b>Para remover um posto específico</b>
-<b>DELETE</b> /api/posto/{id}
-
+<b>Para remover um posto específico</b><br>
+<b>DELETE</b> /api/posto/{id}<br>
+<br>
 ## Notas do Dev
 Eu Leonardo queria agradecer a esta oportunidade que a W16 está proporcionando para todos os amantes da programação de todo o Brasil.
