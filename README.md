@@ -1,93 +1,130 @@
 # W16 Warker App - API
 
-## Desenvolvedor
+## WARKER
 
-Olá! Muito obrigado por participar da avalição técnica para integrar a equipe de desenvolvimento da W16.
+Aplicação API REST em Laravel 8 para indicar os postos das cidades.
 
-Criamos esta avaliação para avaliar seu conhecimento em lógica de programação, capacidade de investigar e conhecer novas ferramentas, organização e qualidade de código e especialmente, sua criatividade.
-
-## Especificação
-No mundo pós-apocaliptico de 2021, o combustível tem um valor inestimável. Gangues bárbaras lutam até a morte pelo controle desse valioso recurso e a W16 está desenvolvendo o aplicativo WARKER, que é a última esperança da humanidade em trazer um pouco de paz e ordem à esse mundo devastado.
-Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de gasolina das diversas cidades, sua localização e o nível dos seus reservatórios. Lembre-se de que não há mais lei e a sua vida depende do sucesso desse backend. Marcopoc não fica feliz quando o seu app falha devido a erros no backend e você não quer deixar o Marcopoc irritado...
-
-## Regras
-- Não há regras, não há lei, apenas a sobrevivência importa! 
-
-## Recomendações
-- Faça bom uso dos recursos do framework (migrations, factories, estrutura MVC, rotas...)
-- D.R.Y. = "Don't Repeat Yourself"
-- Mantenha o código limpo e organizado
-- Utilize comentários pois alguém irá ler o seu código. Nosso último dev esqueceu um comentário importante. RIP :(
-- Utilize o README.md do seu projeto para explicar instalação, funcionamento, o processo que usou para o desenvolvimento ou implorar por misericórdia.
-
-## Importante
-- Use Laravel 8
-- Use Laravel 8
-- Use Laravel 8
-- Já mencionei que a versão do laravel é a v8?
-- Lembre-se de usar os métodos GET,PUT,POST e DELETE.
-
-## Pontos Extras
-Pode contar pontos extras
+## O que o projeto contém
+- Laravel 8
 - CRUD Web
 - Autenticação
-- Teste automatizado
 - Seeder e uso de fakers
 
-### Exemplo de tabelas:
+## Instalação
+Para rodar o projeto faça essas configurações:
+- Clone o projeto (utilizando comando git ou baixando em zip)
+- Instale o composer
+```
+php composer install
+php composer update
+```
+- Renomeie o .env.example para .env
+- Configure o banco de dados como no exemplo abaixo
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=warker
+DB_USERNAME=root
+DB_PASSWORD=
+```
+- Rode a migrations para criar as tabelas do banco de dados
+```
+php artisan migrate
+```
+- Para popular com dados Fake utilize o comando abaixo
+```
+php artisan db:seed
+```
 
-Cidades
-```
-|id |nome_da_cidade|latitude|longitude|created_at|updated_at|
-|int|string        |double  |double   |timestamp |timestamp |
-```
+## Endpoints
+Para conseguir utilizar o <b>POST,GET,POST,PUT e DELETE</b> você pode está utilizando o Postman (programa gratuito). O Endpoints é formado de rotas publicas e rotas protegidas, as rotas públicas você consegue acessar sem o Bearer Token, as rotas protegidas você precisa deste token que é obtido através do login.
 
-Postos
-```
-|id |cidade_id|reservatorio|latitude|longitude|created_at|updated_at|
-|int|int(fk)  |int(1-100%) |double  |double   |timestamp |timestamp |
-```
-
-### Endpoints esperados
-/api/cidade/id
+- Rotas públicas:
+<b>Para se cadastrar</b>
+<b>POST</b> /api/register
 ```
 {
-    id : id,
-    cidade : nome_da_cidade,
-    coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-    postos : {
-        id : id,
-        reservatorio : reservatorio,
-        coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-        updated_at : updated_at,
-        created_at : created_at
-    }
+    "name": "Usuario teste",
+    "email": "teste@teste.com",
+    "password": "senha",
+    "password_confirmation": "senha"
 }
 ```
 
-/api/posto/id
+<b>Para se logar</b>
+<b>POST</b> /api/login
 ```
 {
-    id : id,
-    reservatorio : reservatorio,
-    coords : {
-        latitude : latitude,
-        longitude : longitude
-    },
-    updated_at : updated_at,
-    created_at : created_at
+    "email": "teste@teste.com",
+    "password": "senha",
+}
+Será gerado um Token (Bearer Token) que será usado no HEADER para acessar as rotas protegidas.
+```
+
+- Rotas protegida (Todas é necessário informar o Token no HEADER):
+<b>Para se deslogar</b>
+<b>POST</b> /api/login
+
+<b>Para visualizar todas as cidades cadastradas</b>
+<b>GET</b> /api/cidade
+
+<b>Para visualizar uma cidade específica</b>
+<b>GET</b> /api/cidade/{id}
+
+<b>Para armazenar uma cidade</b>
+<b>POST</b> /api/cidade/
+```
+{
+    "nome_da_cidade": "Sao Paulo",
+    "latitude": 100.02,
+    "longitude": -200.05,
 }
 ```
 
-## Entrega
-Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório todo o código do backend, juntamente com instruções, se necessário. O prazo para entrega será de 7 horas - ou melhor, 7 dias.
+<b>Para atualizar uma cidade específica</b>
+<b>PUT</b> /api/cidade/{id}
+```
+{
+    "nome_da_cidade": "São Paulo",
+    "latitude": 300.18,
+    "longitude": -200.05,
+}
+```
 
-Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso time pelo instagram: @w16.softwarehouse
+<b>Para remover uma cidade específica</b>
+<b>DELETE</b> /api/cidade/{id}
 
-2 DEVS ENTRAM, 1 DEV SAI!
+<b>Para visualizar todos os postos cadastrados</b>
+<b>GET</b> /api/posto
+
+<b>Para visualizar um posto específico</b>
+<b>GET</b> /api/posto/{id}
+
+<b>Para armazenar um posto</b>
+<b>POST</b> /api/posto/
+```
+{
+    "cidade_id": 1,
+    "reservatorio": 95,
+    "latitude": 102.45,
+    "longitude": -240.74",
+}
+```
+
+<b>Para atualizar um posto específico</b>
+<b>PUT</b> /api/posto/{id}
+```
+{
+    "cidade_id": 1,
+    "reservatorio": 90,
+    "latitude": 300.71,
+    "longitude": -200.45,
+}
+```
+
+<b>Para remover um posto específico</b>
+<b>DELETE</b> /api/posto/{id}
+
+## Notas do Dev
+Eu Leonardo queria agradecer a esta oportunidade que a W16 está proporcionando para todos os amantes da programação de todo o Brasil.
