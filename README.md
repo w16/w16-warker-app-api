@@ -1,93 +1,39 @@
-# W16 Warker App - API
+***BACK - SERVER -> Folder: warkerServer***
 
-## Desenvolvedor
 
-Olá! Muito obrigado por participar da avalição técnica para integrar a equipe de desenvolvimento da W16.
+***Todos os acessos aos endpoints necessitam de autenticação***
 
-Criamos esta avaliação para avaliar seu conhecimento em lógica de programação, capacidade de investigar e conhecer novas ferramentas, organização e qualidade de código e especialmente, sua criatividade.
+Acessos necessários:
 
-## Especificação
-No mundo pós-apocaliptico de 2021, o combustível tem um valor inestimável. Gangues bárbaras lutam até a morte pelo controle desse valioso recurso e a W16 está desenvolvendo o aplicativo WARKER, que é a última esperança da humanidade em trazer um pouco de paz e ordem à esse mundo devastado.
-Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de gasolina das diversas cidades, sua localização e o nível dos seus reservatórios. Lembre-se de que não há mais lei e a sua vida depende do sucesso desse backend. Marcopoc não fica feliz quando o seu app falha devido a erros no backend e você não quer deixar o Marcopoc irritado...
+token -> Gerado no ato de login. Baseado nos dados do usuário.
 
-## Regras
-- Não há regras, não há lei, apenas a sobrevivência importa! 
+userId -> Utilizado em validações junto ao *token*.
 
-## Recomendações
-- Faça bom uso dos recursos do framework (migrations, factories, estrutura MVC, rotas...)
-- D.R.Y. = "Don't Repeat Yourself"
-- Mantenha o código limpo e organizado
-- Utilize comentários pois alguém irá ler o seu código. Nosso último dev esqueceu um comentário importante. RIP :(
-- Utilize o README.md do seu projeto para explicar instalação, funcionamento, o processo que usou para o desenvolvimento ou implorar por misericórdia.
 
-## Importante
-- Use Laravel 8
-- Use Laravel 8
-- Use Laravel 8
-- Já mencionei que a versão do laravel é a v8?
-- Lembre-se de usar os métodos GET,PUT,POST e DELETE.
 
-## Pontos Extras
-Pode contar pontos extras
-- CRUD Web
-- Autenticação
-- Teste automatizado
-- Seeder e uso de fakers
 
-### Exemplo de tabelas:
+***Dados de login:***
 
-Cidades
-```
-|id |nome_da_cidade|latitude|longitude|created_at|updated_at|
-|int|string        |double  |double   |timestamp |timestamp |
-```
+User: ccorgz
 
-Postos
-```
-|id |cidade_id|reservatorio|latitude|longitude|created_at|updated_at|
-|int|int(fk)  |int(1-100%) |double  |double   |timestamp |timestamp |
-```
+Pwd: Warker.291221
 
-### Endpoints esperados
-/api/cidade/id
-```
-{
-    id : id,
-    cidade : nome_da_cidade,
-    coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-    postos : {
-        id : id,
-        reservatorio : reservatorio,
-        coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-        updated_at : updated_at,
-        created_at : created_at
-    }
-}
-```
 
-/api/posto/id
-```
-{
-    id : id,
-    reservatorio : reservatorio,
-    coords : {
-        latitude : latitude,
-        longitude : longitude
-    },
-    updated_at : updated_at,
-    created_at : created_at
-}
-```
 
-## Entrega
-Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório todo o código do backend, juntamente com instruções, se necessário. O prazo para entrega será de 7 horas - ou melhor, 7 dias.
 
-Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso time pelo instagram: @w16.softwarehouse
+***FRONT - CLIENT -> Folder: warkerClient***
 
-2 DEVS ENTRAM, 1 DEV SAI!
+***Todo o FRONT está em REACT.JS***
+Em "warkerClient\src\parameters.js", altere os dados de conexão com o BACK e FRONT. Tais como "IP" e "PORTA".
+Ou, caso prefira, utilize a "API" online em "//warker.ccorgz.com/api".
+
+Ps: Meu plano de hospedagem não fornece suporte ao Node/React, portanto utilize o front com nosso querido amigo "npm start".
+
+
+Devido a limitação de arquivos imposta pelo GitHub, segue link para download do Warker Client:
+
+
+https://we.tl/t-2EUf0defYM
+
+
+Thanks for your time. '_'
