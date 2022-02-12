@@ -10,7 +10,7 @@ Laravel 8
 Mysql
 
 
-Manual de Instruções
+Manual de Uso
 
 
 1) Setup ******************
@@ -151,6 +151,6 @@ DELETE:{id}
 
 ***Obs***
 A tabela Cidades e Postos possuem um relacionamento.
-de 1 para muitos, podendo ser cadastrado,
-vários postos relacionados com uma unica cidade e retornado como json.
+de 1 para muitos, podendo ser cadastrado 1 ou varios postos
+relacionados com uma unica cidade e retornado como json.
 bastaria somente uma alteração no metodo de retorno.
