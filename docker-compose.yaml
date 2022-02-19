@@ -1,0 +1,48 @@
+version: '3.3'
+
+services:
+    warker_db:
+        build: ./db/
+        container_name: warker-db
+        restart: always
+        env_file:
+            - ./config/db.env
+        ports:
+            - '3309:3306'
+        networks:
+            - warker_network
+        volumes:
+            - ./db/schema.sql:/docker-entrypoint-initdb.d/init.sql
+
+    warker_api:
+        build:
+          args:
+            user: warker
+            uid: 1000
+          context: ./api/
+          dockerfile: Dockerfile
+        container_name: warker-api
+        depends_on:
+            - warker_db        
+        restart: always
+        working_dir: /var/www/       
+        networks:
+            - warker_network
+        volumes:
+            - ./api:/var/www
+
+    warker_web:
+      build: ./nginx/
+      container_name: warker-web
+      depends_on:
+        - warker_api
+      restart: always      
+      ports:
+        - 8000:80
+      volumes:
+        - ./api:/var/www
+        - ./nginx:/etc/nginx/conf.d
+      networks:
+        - warker_network
+networks:
+    warker_network:
