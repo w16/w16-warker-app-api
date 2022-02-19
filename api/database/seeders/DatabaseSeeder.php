@@ -4,15 +4,16 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
-{
+class DatabaseSeeder extends Seeder {
+
     /**
      * Seed the application's database.
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         \App\Models\Cidade::factory(10)->hasPostos(45)->create();
+        \App\Models\User::factory(1)->create();
     }
+
 }
