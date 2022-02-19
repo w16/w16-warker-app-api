@@ -14,9 +14,9 @@ class PostoFactory extends Factory
     public function definition()
     {
         return [
-            'longitude' => $this->faker->randomFloat(2, 10, 300),
-            'latitude' => $this->faker->randomFloat(2, 10, 300),
-            'reservatorio' => $this->faker->randomFloat(0, 1, 100) 
+            'longitude' => $this->faker->randomFloat(2, -180, 180),
+            'latitude' => $this->faker->randomFloat(2, -90, 90),
+            'reservatorio' => $this->faker->randomFloat(0, 0, 100) 
         ];
     }
 }

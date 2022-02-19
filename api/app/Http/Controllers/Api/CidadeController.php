@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use \App\Http\Controllers\Controller;
 use \App\Models\Cidade;
 use \App\Http\Resources\CidadeResource;
-use \App\Http\Requests\StoreUpdateCidadeRequest;
+use \App\Http\Requests\{
+    UpdateCidadeRequest,
+    StoreCidadeRequest
+};
 
 class CidadeController extends Controller {
 
@@ -28,7 +31,7 @@ class CidadeController extends Controller {
      * @param  \App\Http\Requests\StoreUpdateCidadeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdateCidadeRequest $request) {
+    public function store(StoreCidadeRequest $request) {
         try {
             $cidade = $this->cidade->create($request->all());
             return response()->json(
@@ -59,7 +62,7 @@ class CidadeController extends Controller {
      * @param  Cidade $cidade
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdateCidadeRequest $request, Cidade $cidade) {
+    public function update(UpdateCidadeRequest $request, Cidade $cidade) {
         try {
             $cidade->update($request->all());
             return response()->json(

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
-class StoreUpdateCidadeRequest extends FormRequest {
+class UpdateCidadeRequest extends FormRequest {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class StoreUpdateCidadeRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'nome_da_cidade' => 'required|min:2|max:250',
-            'latitude' => 'required|numeric',
-            'longitude' => 'required|numeric'
+            'nome_da_cidade' => 'required|min:2|max:250|unique:App\Models\Cidade,nome_da_cidade',
+            'latitude' => 'required|numeric|between:-90,90',
+            'longitude' => 'required|numeric|between:-180,180',
         ];
     }
 

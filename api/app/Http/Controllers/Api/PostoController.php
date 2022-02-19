@@ -19,7 +19,7 @@ class PostoController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return PostoResource::collection($this->posto->paginate(10));
+        return Posto::factory()->makeOne()->only(['cidade_id', 'reservatorio', 'latitude', 'longitude']);
     }
 
     /**
@@ -67,7 +67,7 @@ class PostoController extends Controller {
             $posto->update($request->all());
             return response()->json(
                             PostoResource::make($posto),
-                            201
+                            200
             );
         } catch (Exception $err) {
             return response()->json([

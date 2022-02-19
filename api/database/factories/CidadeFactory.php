@@ -17,8 +17,8 @@ class CidadeFactory extends Factory
     {
         return [
             'nome_da_cidade' => $this->faker->words(15, true),
-            'longitude' => $this->faker->randomFloat(2, 10, 300),
-            'latitude' => $this->faker->randomFloat(2, 10, 300)
+            'longitude' => $this->faker->randomFloat(2, -180, 180),
+            'latitude' => $this->faker->randomFloat(2, -90, 90),
         ];
     }
 }
