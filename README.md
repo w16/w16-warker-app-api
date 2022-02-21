@@ -1,93 +1,61 @@
-# W16 Warker App - API
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-## Desenvolvedor
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-Olá! Muito obrigado por participar da avalição técnica para integrar a equipe de desenvolvimento da W16.
+## About Laravel
 
-Criamos esta avaliação para avaliar seu conhecimento em lógica de programação, capacidade de investigar e conhecer novas ferramentas, organização e qualidade de código e especialmente, sua criatividade.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## Especificação
-No mundo pós-apocaliptico de 2021, o combustível tem um valor inestimável. Gangues bárbaras lutam até a morte pelo controle desse valioso recurso e a W16 está desenvolvendo o aplicativo WARKER, que é a última esperança da humanidade em trazer um pouco de paz e ordem à esse mundo devastado.
-Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de gasolina das diversas cidades, sua localização e o nível dos seus reservatórios. Lembre-se de que não há mais lei e a sua vida depende do sucesso desse backend. Marcopoc não fica feliz quando o seu app falha devido a erros no backend e você não quer deixar o Marcopoc irritado...
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-## Regras
-- Não há regras, não há lei, apenas a sobrevivência importa! 
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Recomendações
-- Faça bom uso dos recursos do framework (migrations, factories, estrutura MVC, rotas...)
-- D.R.Y. = "Don't Repeat Yourself"
-- Mantenha o código limpo e organizado
-- Utilize comentários pois alguém irá ler o seu código. Nosso último dev esqueceu um comentário importante. RIP :(
-- Utilize o README.md do seu projeto para explicar instalação, funcionamento, o processo que usou para o desenvolvimento ou implorar por misericórdia.
+## Learning Laravel
 
-## Importante
-- Use Laravel 8
-- Use Laravel 8
-- Use Laravel 8
-- Já mencionei que a versão do laravel é a v8?
-- Lembre-se de usar os métodos GET,PUT,POST e DELETE.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-## Pontos Extras
-Pode contar pontos extras
-- CRUD Web
-- Autenticação
-- Teste automatizado
-- Seeder e uso de fakers
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-### Exemplo de tabelas:
+## Laravel Sponsors
 
-Cidades
-```
-|id |nome_da_cidade|latitude|longitude|created_at|updated_at|
-|int|string        |double  |double   |timestamp |timestamp |
-```
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-Postos
-```
-|id |cidade_id|reservatorio|latitude|longitude|created_at|updated_at|
-|int|int(fk)  |int(1-100%) |double  |double   |timestamp |timestamp |
-```
+### Premium Partners
 
-### Endpoints esperados
-/api/cidade/id
-```
-{
-    id : id,
-    cidade : nome_da_cidade,
-    coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-    postos : {
-        id : id,
-        reservatorio : reservatorio,
-        coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-        updated_at : updated_at,
-        created_at : created_at
-    }
-}
-```
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[OP.GG](https://op.gg)**
 
-/api/posto/id
-```
-{
-    id : id,
-    reservatorio : reservatorio,
-    coords : {
-        latitude : latitude,
-        longitude : longitude
-    },
-    updated_at : updated_at,
-    created_at : created_at
-}
-```
+## Contributing
 
-## Entrega
-Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório todo o código do backend, juntamente com instruções, se necessário. O prazo para entrega será de 7 horas - ou melhor, 7 dias.
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso time pelo instagram: @w16.softwarehouse
+## Code of Conduct
 
-2 DEVS ENTRAM, 1 DEV SAI!
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
