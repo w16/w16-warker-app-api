@@ -12,4 +12,4 @@
 
 6- rodar o comando `php artisan serve" para rodar a API`
 
-7- Importar o ficheiro dentro do diretorio warker-api\.insomnia\nome_do_ficheiro.json lá no insomnia
+7- Importar o ficheiro dentro do diretorio `warker-api\.insomnia\nome_do_ficheiro.json` lá no insomnia
