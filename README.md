@@ -91,3 +91,8 @@ Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório
 Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso time pelo instagram: @w16.softwarehouse
 
 2 DEVS ENTRAM, 1 DEV SAI!
+
+--------------------------------------------------
+Como resolver:
+Acesse o projeto inicial da w16 no github, e faça um fork para o seu repositorio.
+Crie um projeto via cmd com o comando: composer create-project laravel/laravel warker
