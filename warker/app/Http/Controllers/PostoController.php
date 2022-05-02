@@ -19,6 +19,7 @@ class PostoController extends Controller
         $posto = new Posto;
         $posto->cidade_id       = $request->cidade_id;
         $posto->reservatorio    = $request->reservatorio;
+        $posto->latitude       = $request->latitude;
         $posto->longitude       = $request->longitude;
         $posto->save();
         return response()->json(['mensagem'=>"Posto adicionado com sucesso!"],200);
