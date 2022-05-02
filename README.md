@@ -185,7 +185,24 @@ Altere o controller Posto para receber os dados.
 Para popular a tabela postos, utilizei o POSTMAN(aplicativo) com a rota /api/posto/add conforme abaixo:
 http://127.0.0.1:8000/api/posto/add
 
+No controller Posto, preciso adicionar uma função que pegue o id do posto por GET.
+Podemos acessar esses dados através da url http://127.0.0.1:8000/api/posto/2
 
+Foi feito uma validação nesse mesmo controller, onde se não existir o id, ele retorna uma mensagem:
+{
+    "mensagem": "Posto não encontrado!"
+}
+url de exemplo: http://127.0.0.1:8000/api/posto/5
+
+Adicione a rota api no arquivo api.php para alterar postos via PUT:
+Route::put('posto/{id}/update', [PostoController::class,'update']);
+
+No controller de postos, tenho uma função semelhante ao de salvar, porem com o metodo update.
+Podemos testar a função através do link: http://127.0.0.1:8000/api/posto/1/update
+
+Adicione a rota api no arquivo api.php para deletar postos via DELETE:
+Route::delete('posto/{id}/delete', [PostoController::class,'destroy']);
+Podemos testar a função através do link: http://127.0.0.1:8000/api/posto/1/delete
 
 
 
