@@ -94,6 +94,100 @@ Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso ti
 
 
 ## Resolução
+Crie um database com o nome de warker
+
+Faça a alteração do seu database no arquivo .env de acordo com sua conexão local.
+ex:
+DB_DATABASE=warker
+DB_USERNAME=root
+DB_PASSWORD=
+
+Crie o projeto Laravel com versão 8:
 composer create-project --prefer-dist laravel/laravel warker "8.*"
+
+Crie a model Posto:
+php artisan make:model Posto -mc
+
+Crie a model Cidade
+php artisan make:model Cidade -mc
+
+Edite a migration Cidade:
+    public function up()
+    {
+        Schema::create('cidades', function (Blueprint $table) {
+            $table->id();
+            $table->string('nome_da_cidade');
+            $table->double('latitude');
+            $table->double('longitude');
+            $table->timestamps();
+        });
+    }
+
+Edite a migration Posto (onde cidade_id(Posto) é chave estrangeira de id(Cidade) ):
+ public function up()
+    {
+        Schema::create('postos', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('cidade_id');
+            $table->integer('reservatorio');
+            $table->double('latitude');
+            $table->double('longitude');
+            $table->timestamps();
+            $table->foreign('cidade_id')->references('id')->on('cidades')->onDelete('cascade');
+        });
+
+Edite a model Cidade com os campos corretos:
+class Cidade extends Model
+{
+    use HasFactory;
+    protected $table = 'cidades';
+    protected $fillable = [
+        'nome_da_cidade',
+        'latitude',
+        'longitude',
+    ];
+}
+
+Edite a model Posto com os campos corretos:
+class Posto extends Model
+{
+    use HasFactory;
+    protected $table = 'postos';
+    protected $fillable = [
+        'cidade_id',
+        'reservatorio',
+        'latitude',
+        'longitude',
+    ];
+}
+
+Execute a migration Cidade para criação da tabela:
+php artisan migrate --path=/database/migrations/2022_05_02_123857_create_cidades_table.php
+
+Execute a migration padrão, que criará a tabela Posto(restante):
+php artisan migrate
+
+** Obs: Precisei executar a migration Cidade primeiro, pois apenas rodando o artisan migrate padrão não funcionou.
+
+Adicione a rota api no arquivo api.php para adicionar cidades via POST:
+Route::post('cidade/add', [CidadeController::class,'store']);
+
+Altere o controller Cidade para receber os dados.
+
+Para popular a tabela cidade, utilizei o POSTMAN(aplicativo) com a rota /api/cidade/add conforme abaixo:
+http://127.0.0.1:8000/api/cidade/add
+
+Adicione a rota api no arquivo api.php para adicionar postos via POST:
+Route::post('posto/add', [PostoController::class,'store']);
+
+Altere o controller Posto para receber os dados.
+
+Para popular a tabela postos, utilizei o POSTMAN(aplicativo) com a rota /api/posto/add conforme abaixo:
+http://127.0.0.1:8000/api/posto/add
+
+
+
+
+
 
 
