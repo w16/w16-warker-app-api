@@ -91,3 +91,9 @@ Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório
 Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso time pelo instagram: @w16.softwarehouse
 
 2 DEVS ENTRAM, 1 DEV SAI!
+
+
+## Resolução
+composer create-project --prefer-dist laravel/laravel warker "8.*"
+
+
