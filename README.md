@@ -211,6 +211,9 @@ Podemos acessar esses dados através da url http://127.0.0.1:8000/api/cidade/2
 Adicione a rota api no arquivo api.php para alterar cidades via PUT:
 Route::put('cidade/{id}/update', [CidadeController::class,'update']);
 
+Adicione a rota api no arquivo api.php para deletar cidades via DELETE:
+Route::delete('cidade/{id}/delete', [CidadeController::class,'destroy']);
+Podemos testar a função através do link: http://127.0.0.1:8000/api/cidade/1/delete
 
 
 
