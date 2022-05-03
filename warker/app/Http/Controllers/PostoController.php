@@ -13,6 +13,8 @@ class PostoController extends Controller
 
         if($postoId){
             return response()->json(['postos'=>$postoId], 200);
+
+
         }else{
             return response()->json(['mensagem'=>'Posto não encontrado!'], 404);
         }
