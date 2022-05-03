@@ -215,5 +215,12 @@ Adicione a rota api no arquivo api.php para deletar cidades via DELETE:
 Route::delete('cidade/{id}/delete', [CidadeController::class,'destroy']);
 Podemos testar a função através do link: http://127.0.0.1:8000/api/cidade/1/delete
 
+Extras:
+No arquivo web.php, adiciono a rota principal('/') executando a função index dentro do controller de postos
+No PostosController, redireciono o usuário para a view postos.blade.php passando como parametro a lista de postos com a variavel $postos.
+Nessa view, puxo o layout principal main.blade.php, onde temos o cabeçalho/rodape/bootstrap entre outras coisas.
+Para finalizar, pego a variavel $postos e exibo a informação na tela com um looping.
+Para verificar seu funcionamento, basta acessar a url: http://127.0.0.1:8000/postos#
 
+Qualquer dúvida ou sugestão, estou a disposição! ;)
 
