@@ -84,4 +84,16 @@ class PostoController extends Controller
         $posto->save();
         return response()->json(['mensagem'=>"Posto adicionado com sucesso!"],200);
     }
+
+    public function index(){
+
+        $postos = Posto::all();
+
+        return view( 'postos', 
+            [
+                'postos' => $postos
+            ] );            
+    }
+
+    
 }
