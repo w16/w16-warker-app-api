@@ -12,8 +12,19 @@ class PostoController extends Controller
         $postoId = Posto::find($id);
 
         if($postoId){
-            return response()->json(['postos'=>$postoId], 200);
 
+            $data = [
+                'id'            =>      $postoId->id,
+                'reservatorio'  =>      $postoId->reservatorio,
+                'coords'        =>[
+                    'latitude'      =>      $postoId->latitude,
+                    'longitude'     =>      $postoId->longitude
+                ],
+                'updated_at' => $postoId->updated_at,
+                'created_at' => $postoId->created_at
+            ];
+
+            return $data;
 
         }else{
             return response()->json(['mensagem'=>'Posto não encontrado!'], 404);

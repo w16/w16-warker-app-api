@@ -204,6 +204,12 @@ Adicione a rota api no arquivo api.php para deletar postos via DELETE:
 Route::delete('posto/{id}/delete', [PostoController::class,'destroy']);
 Podemos testar a função através do link: http://127.0.0.1:8000/api/posto/1/delete
 
+No controller Cidade, preciso adicionar uma função que pegue o id da cidade por GET.
+Nele, faço a busca da cidade, e pego o id da cidade para executar uma nova busca de postos que possuem esse id, e assim monto o JSON.
+Podemos acessar esses dados através da url http://127.0.0.1:8000/api/cidade/2
+
+Adicione a rota api no arquivo api.php para alterar cidades via PUT:
+Route::put('cidade/{id}/update', [CidadeController::class,'update']);
 
 
 
