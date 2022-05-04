@@ -4,6 +4,9 @@
 
 Aplicação API REST em Laravel 8 para indicar os postos das cidades.
 
+## Proposta
+<b>Link da Proposta: [Proposta.md](./proposta.md#w16-warker-app---api)</b>
+
 ## O que o projeto contém
 - Laravel 8
 - CRUD Web
