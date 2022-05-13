@@ -1,93 +1,42 @@
 # W16 Warker App - API
 
-## Desenvolvedor
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Como executar o projeto <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->  
+<h2> :computer: Como executar o projeto </h2>
 
-Olá! Muito obrigado por participar da avalição técnica para integrar a equipe de desenvolvimento da W16.
+<!-- Pré-requisitos -->  
+<!--  <h3> Pré-requisitos</h3>
+    <ul>
+      <li> Módulo <strong>numpy</strong>. </li>
+      <li> Módulo <strong>pygame</strong>. </li>      
+     </ul> -->
 
-Criamos esta avaliação para avaliar seu conhecimento em lógica de programação, capacidade de investigar e conhecer novas ferramentas, organização e qualidade de código e especialmente, sua criatividade.
+```bash
+# Clone este repositório
+$ git clone https://github.com/cleidsonsouza/w16-warker-app-api.git
 
-## Especificação
-No mundo pós-apocaliptico de 2021, o combustível tem um valor inestimável. Gangues bárbaras lutam até a morte pelo controle desse valioso recurso e a W16 está desenvolvendo o aplicativo WARKER, que é a última esperança da humanidade em trazer um pouco de paz e ordem à esse mundo devastado.
-Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de gasolina das diversas cidades, sua localização e o nível dos seus reservatórios. Lembre-se de que não há mais lei e a sua vida depende do sucesso desse backend. Marcopoc não fica feliz quando o seu app falha devido a erros no backend e você não quer deixar o Marcopoc irritado...
+# Acesse a pasta do projeto
+$ cd w16-warker-app-api.git
 
-## Regras
-- Não há regras, não há lei, apenas a sobrevivência importa! 
+# Atualize o pip
+$ pip install --upgrade pip
 
-## Recomendações
-- Faça bom uso dos recursos do framework (migrations, factories, estrutura MVC, rotas...)
-- D.R.Y. = "Don't Repeat Yourself"
-- Mantenha o código limpo e organizado
-- Utilize comentários pois alguém irá ler o seu código. Nosso último dev esqueceu um comentário importante. RIP :(
-- Utilize o README.md do seu projeto para explicar instalação, funcionamento, o processo que usou para o desenvolvimento ou implorar por misericórdia.
+# Instale as dependências
+$ pip install -r requirements.txt
 
-## Importante
-- Use Laravel 8
-- Use Laravel 8
-- Use Laravel 8
-- Já mencionei que a versão do laravel é a v8?
-- Lembre-se de usar os métodos GET,PUT,POST e DELETE.
+# Execute o projeto (para criar o banco de dados)
+$ python3 main.py
 
-## Pontos Extras
-Pode contar pontos extras
-- CRUD Web
-- Autenticação
-- Teste automatizado
-- Seeder e uso de fakers
+# Execute o projeto (para consumir a API)
+$ python -m uvicorn main:app --reload
 
-### Exemplo de tabelas:
+# Realize simulações utilizando o endereço abaixo (ou outra ferramenta)
+$ http://127.0.0.1:8000/docs
 
-Cidades
-```
-|id |nome_da_cidade|latitude|longitude|created_at|updated_at|
-|int|string        |double  |double   |timestamp |timestamp |
+# Observação:
+$ Para inserir datas, utilize o seguinte padrão: 2022-05-11 12:20:30
+
 ```
 
-Postos
-```
-|id |cidade_id|reservatorio|latitude|longitude|created_at|updated_at|
-|int|int(fk)  |int(1-100%) |double  |double   |timestamp |timestamp |
-```
-
-### Endpoints esperados
-/api/cidade/id
-```
-{
-    id : id,
-    cidade : nome_da_cidade,
-    coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-    postos : {
-        id : id,
-        reservatorio : reservatorio,
-        coords : {
-            latitude : latitude,
-            longitude : longitude
-        },
-        updated_at : updated_at,
-        created_at : created_at
-    }
-}
-```
-
-/api/posto/id
-```
-{
-    id : id,
-    reservatorio : reservatorio,
-    coords : {
-        latitude : latitude,
-        longitude : longitude
-    },
-    updated_at : updated_at,
-    created_at : created_at
-}
-```
-
-## Entrega
-Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório todo o código do backend, juntamente com instruções, se necessário. O prazo para entrega será de 3 horas - ou melhor, 3 dias.
-
-Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso time.
-
-2 DEVS ENTRAM, 1 DEV SAI!
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Licença <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->     
+<h2> :unlock: Licença</h2>
+<p> Este projeto está sob a <a href="https://github.com/cleidsonsouza/n-rainhas-2018/blob/master/LICENSE"> licença MIT</a>. </p>
