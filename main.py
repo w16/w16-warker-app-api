@@ -1,4 +1,6 @@
 import os
+from fastapi import FastAPI
+from pydantic import BaseModel
 from datetime import datetime
 from sqlalchemy import create_engine, Column, ForeignKey
 from sqlalchemy import Integer, Float, String, DateTime
@@ -25,7 +27,7 @@ class Cidade(Base):
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
     def __repr__(self):
-        return '<Cidade {self.nome}>'
+        return '{<Cidade {self.nome}>}'
 
 class Posto(Base):
     __tablename__ = 'posto'
@@ -42,11 +44,66 @@ class Posto(Base):
         return '<Posto {self.nome}>'
 
 
-def init_db():
-    arquivo = 'postos.db'
-    if not os.path.isfile(arquivo):
-        Base.metadata.create_all(bind=engine)
+app = FastAPI()
 
+
+@app.get("/api/cidade/{id_cidade}")
+async def get_cidade(id_cidade: int):
+    query = session.query(Cidade).filter_by(id=id_cidade)    
+    if query.count() > 0:
+       return query.first()
+    return {"Mensagem" : "Cidade não encontrada!"}
+
+@app.get("/api/posto/{id_posto}")
+async def get_posto(id_posto: int):
+    query = session.query(Posto).filter_by(id=id_posto)    
+    if query.count() > 0:
+       return query.first()
+    return {"Mensagem" : "Posto não encontrado!"}
+
+
+@app.post("/api/cidade")
+async def insere_cidade(id2: int, 
+                        nome_da_cidade2: str, 
+                        latitude2: float, 
+                        longitude2: float, 
+                        created_at2: datetime, 
+                        updated_at2: datetime
+                        ):
+    cidade = Cidade(id = id2, 
+                    nome_da_cidade = nome_da_cidade2, 
+                    latitude = latitude2, 
+                    longitude = longitude2, 
+                    created_at = created_at2, 
+                    updated_at = updated_at2
+                    )
+    session.add(cidade)
+    session.commit()        
+    return cidade
+
+@app.post("/api/posto")
+async def insere_posto(id2: int, 
+                        cidade_id2: str, 
+                        latitude2: float, 
+                        longitude2: float, 
+                        created_at2: datetime, 
+                        updated_at2: datetime
+                        ):
+    cidade = Posto(id = id2, 
+                    cidade_id = cidade_id2, 
+                    latitude = latitude2, 
+                    longitude = longitude2, 
+                    created_at = created_at2, 
+                    updated_at = updated_at2
+                    )
+    session.add(cidade)
+    session.commit()        
+    return cidade
+
+def init_db():
+    Base.metadata.create_all(bind=engine)
 
 if __name__ == '__main__':
-    init_db()
+    arquivo = 'postos.db'
+    if not os.path.isfile(arquivo):
+        init_db()
