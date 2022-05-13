@@ -15,7 +15,7 @@
 $ git clone https://github.com/cleidsonsouza/w16-warker-app-api.git
 
 # Acesse a pasta do projeto
-$ cd w16-warker-app-api.git
+$ cd w16-warker-app-api
 
 # Atualize o pip
 $ pip install --upgrade pip
