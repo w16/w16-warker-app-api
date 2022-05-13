@@ -45,21 +45,14 @@ class Posto(Base):
 
 
 app = FastAPI()
-'''
-def pegar_postos(id_cidade: int):
-    query2 = session.query(Posto).filter_by(cidade_id=id_cidade)   
-    postos = query2.all()
-    
-    for p in postos:
 
-'''
+
 @app.get("/api/cidade/{id_cidade}")
 async def get_cidade(id_cidade: int):
     query = session.query(Cidade).filter_by(id=id_cidade)    
-    query2 = session.query(Posto).filter_by(cidade_id=id_cidade)   
+    query2 = session.query(Posto).filter_by(cidade_id=id_cidade)       
     postos = query2.all()
-    cidade = query.first()
-    
+    cidade = query.first()        
     if query.count() > 0:        
         value = { 
             "id" : cidade.id,
@@ -68,9 +61,9 @@ async def get_cidade(id_cidade: int):
                 "latitude" : cidade.latitude,
                 "longitude" : cidade.longitude
             },
-            "postos" : query2.all()
+            "postos" : postos
         }
-        return value#json.dumps(value)
+        return value
     return {"Mensagem" : "Cidade não encontrada!"}
 
 @app.get("/api/posto/{id_posto}")
