@@ -106,9 +106,14 @@ async def insere_cidade(id2: int,
                     longitude = longitude2, 
                     created_at = created_at2, 
                     updated_at = updated_at2)
-    session.add(cidade)
-    session.commit()        
-    return cidade
+    # Tratamento de exceção
+    try:
+        session.add(cidade)
+        session.commit()        
+        return {"Mensagem" : "Cidade inserida!"}    
+    except:
+        session.rollback()
+        {"Mensagem" : "Erro ao tentar inserir cidade!"}
 
 # Cria rota para o método post e define função para criar cidades
 @app.post("/api/posto")
@@ -128,9 +133,40 @@ async def insere_posto(id2: int,
                     created_at = created_at2, 
                     updated_at = updated_at2
                     )
-    session.add(cidade)
-    session.commit()        
-    return cidade
+    # Tratamento de exceção
+    try:
+        session.add(cidade)
+        session.commit()        
+        return {"Mensagem" : "Posto inserido!"}
+    except:
+        session.rollback()
+        {"Mensagem" : "Erro ao tentar inserir posto!"}
+
+# Cria rota para o método delete e define função para deletar cidades
+@app.delete("/api/cidade/{id_cidade}")
+def delete_cidade(id: int):
+    cidade = session.query(Cidade).get(id)    
+    # Tratamento de exceção
+    try:
+        session.delete(cidade)
+        session.commit()
+        return {"Mensagem" : "Cidade excluída com sucessor"}    
+    except:
+        session.rollback()
+        return {"Mensagem" : "Erro ao tentar excluir cidade!"}
+
+# Cria rota para o método delete e define função para deletar postos
+@app.delete("/api/posto/{id_posto}")
+def delete_posto(id: int):
+    posto = session.query(Posto).get(id)    
+    # Tratamento de exceção
+    try:
+        session.delete(posto)
+        session.commit()               
+        return {"Mensagem" : "Posto excluído com sucessor"}
+    except:
+        session.rollback()
+        return {"Mensagem" : "Erro ao tentar excluir posto!"}
 
 # Criar o banco de dados
 def init_db():
