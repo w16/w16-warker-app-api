@@ -20,12 +20,6 @@ Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de ga
 - Utilize comentários pois alguém irá ler o seu código. Nosso último dev esqueceu um comentário importante. RIP :(
 - Utilize o README.md do seu projeto para explicar instalação, funcionamento, o processo que usou para o desenvolvimento ou implorar por misericórdia.
 
-## Importante
-- Use Laravel 8
-- Use Laravel 8
-- Use Laravel 8
-- Já mencionei que a versão do laravel é a v8?
-- Lembre-se de usar os métodos GET,PUT,POST e DELETE.
 
 ## Pontos Extras
 Pode contar pontos extras
