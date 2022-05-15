@@ -6,3 +6,4 @@ router = APIRouter()
 # * definição das rotas
 router.include_router(cidades.router, prefix='/cidades') #rota para cidades
 router.include_router(postos.router, prefix='/postos') #rota para postos
+
