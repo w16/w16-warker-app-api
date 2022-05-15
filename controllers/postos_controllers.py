@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from models.model import Postos
+from models.posto import Posto
 
 # ! este arquivo será o nosso controller para posto, aqui ficará nossos métodos para postos
 # ? nossos métodos serão assícronos
@@ -7,11 +7,11 @@ from models.model import Postos
 router = APIRouter()
 
 @router.post('/')
-async def add_posto(posto: Postos):
+async def add_posto(posto: Posto):
   await posto.save()
   return posto
 
 
 @router.get('/')
 async def list_postos():
-  return await Postos.objects.all()
+  return await Posto.objects.all()
