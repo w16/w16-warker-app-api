@@ -1,28 +1,31 @@
-# W16 Warker App - API
+<h1>SURVIVEAPI</h1>
+Precisamos sobreviver neste mundo pós apocaliptico e para isso precisamos unir forças.
+Criei esta api para que possamos cadastrar a sua cidade e os postos de abastecimento.
+Aqui você poderá consultar os postos de abastecimento em cada cidade e poderá também cadastrar outros para ajusar outros sobreviventes.
 
-## Desenvolvedor
+Bem vindo, e esperamos sinceramente que vc não seja um zumbi.
 
-Olá! Muito obrigado por participar da avalição técnica para integrar a equipe de desenvolvimento da W16.
+<h2>EXPLICAÇÃO DO PROJETO</h2>
+Para o projeto utilizei o venv como máquina virtual, instalei o fastapi(claro, rsrs), o uvicorn e o ormar.
+O banco de dados trabalhei com o SQLite
 
-Criamos esta avaliação para avaliar seu conhecimento em lógica de programação, capacidade de investigar e conhecer novas ferramentas, organização e qualidade de código e especialmente, sua criatividade.
+Tive dificuldades na validação dos tipos de datas(datetime ou Timestamp)
+
+
+
+
 
 ## Especificação
+
 No mundo pós-apocaliptico de 2021, o combustível tem um valor inestimável. Gangues bárbaras lutam até a morte pelo controle desse valioso recurso e a W16 está desenvolvendo o aplicativo WARKER, que é a última esperança da humanidade em trazer um pouco de paz e ordem à esse mundo devastado.
 Esse aplicativo deve consumir uma API REST em Laravel que indica os postos de gasolina das diversas cidades, sua localização e o nível dos seus reservatórios. Lembre-se de que não há mais lei e a sua vida depende do sucesso desse backend. Marcopoc não fica feliz quando o seu app falha devido a erros no backend e você não quer deixar o Marcopoc irritado...
 
-## Regras
-- Não há regras, não há lei, apenas a sobrevivência importa! 
-
-## Recomendações
-- Faça bom uso dos recursos do framework (migrations, factories, estrutura MVC, rotas...)
-- D.R.Y. = "Don't Repeat Yourself"
-- Mantenha o código limpo e organizado
-- Utilize comentários pois alguém irá ler o seu código. Nosso último dev esqueceu um comentário importante. RIP :(
 - Utilize o README.md do seu projeto para explicar instalação, funcionamento, o processo que usou para o desenvolvimento ou implorar por misericórdia.
 
-
 ## Pontos Extras
+
 Pode contar pontos extras
+
 - CRUD Web
 - Autenticação
 - Teste automatizado
@@ -31,19 +34,23 @@ Pode contar pontos extras
 ### Exemplo de tabelas:
 
 Cidades
+
 ```
 |id |nome_da_cidade|latitude|longitude|created_at|updated_at|
 |int|string        |double  |double   |timestamp |timestamp |
 ```
 
 Postos
+
 ```
 |id |cidade_id|reservatorio|latitude|longitude|created_at|updated_at|
 |int|int(fk)  |int(1-100%) |double  |double   |timestamp |timestamp |
 ```
 
 ### Endpoints esperados
+
 /api/cidade/id
+
 ```
 {
     id : id,
@@ -66,6 +73,7 @@ Postos
 ```
 
 /api/posto/id
+
 ```
 {
     id : id,
@@ -80,6 +88,7 @@ Postos
 ```
 
 ## Entrega
+
 Crie um FORK deste repositório e faça um Pull-Request. Commite no repositório todo o código do backend, juntamente com instruções, se necessário. O prazo para entrega será de 3 horas - ou melhor, 3 dias.
 
 Qualquer dúvida, crie um issue neste projeto ou entre em contato com o nosso time.
