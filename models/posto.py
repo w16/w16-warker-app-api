@@ -16,6 +16,6 @@ class Posto(ormar.Model):
   reservatorio: int = ormar.Integer() # vai ser representado em porcentagem
   latitude: float = ormar.Float()
   longitude: float = ormar.Float()
-  created_at: Timestamp
-  updated_at: Timestamp
+  # created_at: str = ormar.DateTime()
+  # updated_at: str = ormar.DateTime()
   cidade_id: int = ormar.ForeignKey(Cidade) #FOREIGN KEY

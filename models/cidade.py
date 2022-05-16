@@ -1,3 +1,4 @@
+from datetime import datetime
 from sqlite3 import Timestamp
 from typing import Optional
 import ormar
@@ -13,5 +14,5 @@ class Cidade(ormar.Model):
   nome_da_cidade: str = ormar.String(max_length=150)
   latitude: float = ormar.Float()
   longitude: float = ormar.Float()
-  created_at: Timestamp
-  updated_at: Timestamp
+  # created_at: str = ormar.DateTime()
+  # updated_at: str = ormar.DateTime()
